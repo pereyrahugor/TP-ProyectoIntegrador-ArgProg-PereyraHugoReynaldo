@@ -1,0 +1,13 @@
+.row{
+    align-items: center;
+    background-color: #1d1d1d;
+    color: white;
+    padding: 20px;
+}
+div{
+    text-align: center;
+}
+h1{
+    text-align: left;
+    padding: 20px;
+}
