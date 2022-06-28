@@ -9,17 +9,16 @@ div{
 /*Etiqueta nombre*/
 #nombre{
     font-weight: bold;
-    margin-top: 5%;
 }
 /*Estilo foto perfil*/
 @media (min-width: 576px){
     #perfil{
         position:absolute;
-        width: 15%;
+        width: 12%;
         border-radius: 100%;
         box-shadow: 3px 3px 3px gray;
-        left: 5%;
-        top: 500px;
+        left: 2%;
+        top: 400px;
     }
 }
 @media (max-width: 575px){
