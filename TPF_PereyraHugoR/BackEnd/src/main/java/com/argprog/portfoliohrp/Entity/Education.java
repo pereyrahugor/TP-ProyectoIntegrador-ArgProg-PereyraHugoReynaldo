@@ -1,4 +1,5 @@
 package com.argprog.portfoliohrp.Entity;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,36 +16,30 @@ import lombok.Setter;
 
 @Entity
 @Setter @Getter
-public class Persona{
+public class Education{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     
     @NotNull
-    @Size(min = 1, max = 50, message="no cumple con la longitud")
-    private String name;
+    private Long idPersona;
+    
+    private String imgInstitute;
     
     @NotNull
     @Size(min = 1, max = 50, message="no cumple con la longitud")
-    private String lastName;
+    private String title;
     
     @NotNull
     @Size(min = 1, max = 50, message="no cumple con la longitud")
-    private String description;
-    
-    private String imgPerfil;
-    
-    private String imgBanner;
+    private Date yearEstudied;
     
     @NotNull
     @Size(min = 1, max = 50, message="no cumple con la longitud")
-    private String country;
+    private String duration;
+    
+    @NotNull
+    @Size(min = 1, max = 50, message="no cumple con la longitud")
+    private String descriptionEducation;
         
-    @NotNull
-    @Size(min = 1, max = 50, message="no cumple con la longitud")
-    private String estate;
-            
-    @NotNull
-    @Size(min = 1, max = 50, message="no cumple con la longitud")
-    private String contact;
 }
