@@ -1,15 +1,15 @@
 <div class="row">
     <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2"> 
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoHYtXTchhspak0O8PNPKAPD9Cf08U6284ng&usqp=CAU" class="img-fluid" id="perfil">
+        <img src= "{{persona.imgPerfil}}" class="img-fluid" id="perfil">
     </div>
     <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-        <h1 id="nombre">Pereyra Hugo Reynaldo</h1>
-        <p>Full Stack Developer Jr</p>
+        <h1 id="nombre">{{persona.apellido}} {{persona.nombre}}</h1>
+        <p>{{persona.texto}}</p>
     </div>
     <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
         <span>
             <h1>Acerca de Mí</h1>
-            <p>Jefe de Calidad y Mejora Continua, Asesor en Tecnologías de Gestión, Análisis y mejora de procesos, Desarrollador Autodidacta, Estudiante de Ingenieria Informatica</p>
+            <p>{{persona.descripcion}}</p>
         </span>
     </div>
 </div>

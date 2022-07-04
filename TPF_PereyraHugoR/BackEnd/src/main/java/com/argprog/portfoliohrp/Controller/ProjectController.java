@@ -43,12 +43,14 @@ public class ProjectController {
     @PutMapping ("Proyectos/Editar/{id}")
     public Project editProject (@PathVariable Long id,
                                 @RequestParam("imgProyecto")         String newImgProject,
+                                @RequestParam("nombreProyecto")      String newNameProject,
                                 @RequestParam("descripcionProyecto") String newDescriptionProject,
                                 @RequestParam("linkProyecto")        String newLinkProject) {
         
         Project project = iprojectService.findProject(id);
         
         project.setImgProject(newImgProject);
+        project.setNameProject(newNameProject);
         project.setDescriptionProject(newDescriptionProject);
         project.setLinkProject(newLinkProject);
         

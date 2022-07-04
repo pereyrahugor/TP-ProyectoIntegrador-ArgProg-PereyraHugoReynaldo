@@ -27,6 +27,10 @@ public class Project{
     
     @NotNull
     @Size(min = 1, max = 50, message="no cumple con la longitud")
+    private String nameProject;
+    
+    @NotNull
+    @Size(min = 1, max = 50, message="no cumple con la longitud")
     private String descriptionProject;
     
     @NotNull

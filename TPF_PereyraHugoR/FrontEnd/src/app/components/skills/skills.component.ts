@@ -9,7 +9,7 @@ import { SkillService } from 'src/app/service/skill.service';
 })
 export class SkillsComponent implements OnInit {
 
-  skill: skill = new skill("", "", "");
+  skill: skill = new skill("", "", 0);
 
   constructor(public skillService: SkillService) { }
 

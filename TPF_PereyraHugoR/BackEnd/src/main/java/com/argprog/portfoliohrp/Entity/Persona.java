@@ -24,6 +24,9 @@ public class Persona{
     @Size(min = 1, max = 50, message="no cumple con la longitud")
     private String name;
     
+    @Size(min = 1, max = 50, message="no cumple con la longitud")
+    private String text;
+    
     @NotNull
     @Size(min = 1, max = 50, message="no cumple con la longitud")
     private String lastName;

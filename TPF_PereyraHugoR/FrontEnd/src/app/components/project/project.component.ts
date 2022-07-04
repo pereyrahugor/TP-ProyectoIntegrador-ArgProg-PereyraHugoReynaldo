@@ -9,7 +9,7 @@ import { ProjectService } from 'src/app/service/project.service';
 })
 export class ProjectComponent implements OnInit {
 
-  project: project = new project("", "", "");
+  project: project = new project("", "", "", "");
 
   constructor(public projectService: ProjectService) { }
 

@@ -1,24 +1,30 @@
 <div class="row">
     <h1>Hard & Soft Skills</h1>
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-        <circle-progress
-            [percent]="50"
-            [radius]="100"
-            [imageSrc]="'../../../assets/iconos/html.png'"
-            [showImage]="true"
-            [imageHeight]="100"
-            [imageWidth]="100"
-            [backgroundColor]="'#8d8d8d'"
-            [showUnits]="false"
-            [showSubtitle]="false"
-            [outerStrokeWidth]="15"
-            [innerStrokeWidth]="5"
-            [outerStrokeColor]="'#f16524'"
-            [innerStrokeColor]="'#e54c21'"
-            [animation]="true"
-            [animationDuration]="1000"
-        ></circle-progress>
-    </div>
+    <ul>
+        <li>
+        <h1>{{skill.nombreHabilidad}}</h1>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <circle-progress
+                    [percent]="'{{skill.progreso}}'"
+                    [radius]="100"
+                    [imageSrc]="'{{skill.imgHabilidad}}'"
+                    [showImage]="true"
+                    [imageHeight]="100"
+                    [imageWidth]="100"
+                    [backgroundColor]="'#8d8d8d'"
+                    [showUnits]="false"
+                    [showSubtitle]="false"
+                    [outerStrokeWidth]="15"
+                    [innerStrokeWidth]="5"
+                    [outerStrokeColor]="'#f16524'"
+                    [innerStrokeColor]="'#e54c21'"
+                    [animation]="true"
+                    [animationDuration]="1000"
+                ></circle-progress>
+            </div> 
+        </li>       
+    </ul>
+    
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
         <circle-progress
             [percent]="50"
