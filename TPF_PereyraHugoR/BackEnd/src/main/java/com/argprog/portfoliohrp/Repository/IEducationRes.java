@@ -11,6 +11,6 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public interface IEdicationRes extends JpaRepository <Education, Long> {
+public interface IEducationRes extends JpaRepository <Education, Long> {
     
 }

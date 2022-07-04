@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class PersonaController {
     @Autowired IPersonaService ipersonaService;
     
-    @GetMapping ("personas/Buscar")
+    @GetMapping ("Personas/Buscar")
     public List<Persona> getPersona(){
         return ipersonaService.getPersona();
     }
@@ -37,7 +37,7 @@ public class PersonaController {
     @DeleteMapping ("Personas/Borrar/{id}")
     public String deletePersona (@PathVariable Long id){
         ipersonaService.deletePersona(id);
-        return "Persona id " + id + "fue Eliminada con exito!";
+        return "Persona id " + id + " fue Eliminada con exito!";
     }
     
     @PutMapping ("Personas/Editar/{id}")
