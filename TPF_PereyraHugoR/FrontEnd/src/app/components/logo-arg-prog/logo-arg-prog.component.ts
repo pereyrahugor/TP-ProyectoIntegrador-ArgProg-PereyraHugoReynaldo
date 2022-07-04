@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { social } from 'src/app/model/social.model';
+import { SocialService } from 'src/app/service/social.service';
 
 @Component({
   selector: 'app-logo-arg-prog',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogoArgProgComponent implements OnInit {
 
-  constructor() { }
+  social: social = new social("", "", "");
+
+  constructor(public socialService: SocialService) { }
 
   ngOnInit(): void {
+    this.socialService.getSocial().subscribe(data => {this.social = data})
   }
-
 }
