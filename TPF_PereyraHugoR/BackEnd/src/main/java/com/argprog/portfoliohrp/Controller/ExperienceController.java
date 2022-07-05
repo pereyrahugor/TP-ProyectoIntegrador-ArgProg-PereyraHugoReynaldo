@@ -26,9 +26,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class ExperienceController {
     @Autowired IExperienceService iexperienceService;
     
-    @GetMapping ("Experiencia/Buscar")
+    @GetMapping ("Experiencia/Listar")
     public List<Experience> getExperience(){
         return iexperienceService.getExperience();
+    }
+    
+    @GetMapping ("Experiencia/Buscar")
+    public Experience findExperience(){
+        return iexperienceService.findExperience((long) 1);
     }
     
     @PostMapping ("Experiencia/Crear")
@@ -38,13 +43,13 @@ public class ExperienceController {
     }
     
     @DeleteMapping ("Experiencia/Borrar/{id}")
-    public String deleteExperience (@PathVariable Long id){
+    public String deleteExperience (@PathVariable long id){
         iexperienceService.deleteExperience(id);
         return "Experiencia id " + id + " fue Eliminada con exito!";
     }
     
     @PutMapping ("Experiencia/Editar/{id}")
-    public Experience editExperience (@PathVariable Long id,
+    public Experience editExperience (@PathVariable long id,
                                     @RequestParam("imgImgBusiness")        String newImgBusiness,
                                     @RequestParam("Business")           String newBusiness,
                                     @RequestParam("Position")            String newPosition,

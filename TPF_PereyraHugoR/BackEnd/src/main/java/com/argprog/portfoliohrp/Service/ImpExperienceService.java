@@ -29,12 +29,12 @@ public class ImpExperienceService implements IExperienceService{
     }
 
     @Override
-    public void deleteExperience(Long id) {
+    public void deleteExperience(long id) {
         iexperienceRes.deleteById(id);
     }
 
     @Override
-    public Experience findExperience(Long id) {
+    public Experience findExperience(long id) {
         Experience experience = iexperienceRes.findById(id).orElse(null);
         return experience;
     }

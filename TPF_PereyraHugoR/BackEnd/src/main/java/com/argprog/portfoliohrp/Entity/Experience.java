@@ -19,10 +19,10 @@ import lombok.Setter;
 public class Experience{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long id;
+    private long id;
     
     @NotNull
-    private Long idPersona;
+    private long idPersona;
     
     private String imgBusiness;
     

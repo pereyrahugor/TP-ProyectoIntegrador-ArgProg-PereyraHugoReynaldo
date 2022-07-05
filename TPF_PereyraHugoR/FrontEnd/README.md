@@ -40,5 +40,14 @@ insert into persona (id, contact, country, description, estate, img_banner, img_
                             "https://icon-library.com/icon/icon-ninja-5.html",
                             "Pereyra","Hugo Reynaldo","FullStack Developer Jr");
                             
-select * from persona
+select * from persona;
 
+insert into experience (id, business, description_position, id_persona, img_business, position, year_in, year_out)
+					values(1, "Metalùrgica JMD","Tareas Generales de producción",1,"https://i.ibb.co/h2WBYRm/logo-alfa-final.png","Operaio",'2009-11-25','2015-06-01');
+insert into experience (id, business, description_position, id_persona, img_business, position, year_in, year_out)
+					values(2, "Metalùrgica JMD","Implementación Normas ISO y Mejora Continua",1,"https://i.ibb.co/h2WBYRm/logo-alfa-final.png","Responsable SGI",'2015-06-01','2022-01-01'); 
+insert into experience (id, business, description_position, id_persona, img_business, position, year_in)
+					values(3, "Metalùrgica JMD","Seguimiento y Mejora de Procesos",1,"https://i.ibb.co/h2WBYRm/logo-alfa-final.png","Jefe de Calidad y Mejora Continua",'2022-01-01'); 
+
+
+select * from experience;
