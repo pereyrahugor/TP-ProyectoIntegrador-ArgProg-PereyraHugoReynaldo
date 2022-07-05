@@ -5,7 +5,7 @@
         <h1>{{skill.nombreHabilidad}}</h1>
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                 <circle-progress
-                    [percent]="'{{skill.progreso}}'"
+                    [percent]="skill.progreso"
                     [radius]="100"
                     [imageSrc]="'{{skill.imgHabilidad}}'"
                     [showImage]="true"
@@ -16,108 +16,12 @@
                     [showSubtitle]="false"
                     [outerStrokeWidth]="15"
                     [innerStrokeWidth]="5"
-                    [outerStrokeColor]="'#f16524'"
-                    [innerStrokeColor]="'#e54c21'"
+                    [outerStrokeColor]="'{{skill.colorExterno}}'"
+                    [innerStrokeColor]="'{{skill.colorInterno}}'"
                     [animation]="true"
                     [animationDuration]="1000"
                 ></circle-progress>
             </div> 
         </li>       
     </ul>
-    
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-        <circle-progress
-            [percent]="50"
-            [radius]="100"
-            [imageSrc]="'../../../assets/iconos/CSS.png'"
-            [showImage]="true"
-            [imageHeight]="100"
-            [imageWidth]="100"
-            [backgroundColor]="'#8d8d8d'"
-            [showUnits]="false"
-            [showSubtitle]="false"
-            [outerStrokeWidth]="15"
-            [innerStrokeWidth]="5"
-            [outerStrokeColor]="'#3399ff'"
-            [innerStrokeColor]="'#2277ff'"
-            [animation]="true"
-            [animationDuration]="1000"
-        ></circle-progress>
-    </div>
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-        <circle-progress
-            [percent]="50"
-            [radius]="100"
-            [imageSrc]="'../../../assets/iconos/js.png'"
-            [showImage]="true"
-            [imageHeight]="100"
-            [imageWidth]="100"
-            [backgroundColor]="'#8d8d8d'"
-            [showUnits]="false"
-            [showSubtitle]="false"
-            [outerStrokeWidth]="15"
-            [innerStrokeWidth]="5"
-            [outerStrokeColor]="'#ffd83a'"
-            [innerStrokeColor]="'#dab92d'"
-            [animation]="true"
-            [animationDuration]="1000"
-        ></circle-progress>
-    </div>
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-        <circle-progress
-            [percent]="50"
-            [radius]="100"
-            [imageSrc]="'../../../assets/iconos/git.png'"
-            [showImage]="true"
-            [imageHeight]="100"
-            [imageWidth]="100"
-            [backgroundColor]="'#8d8d8d'"
-            [showUnits]="false"
-            [showSubtitle]="false"
-            [outerStrokeWidth]="15"
-            [innerStrokeWidth]="5"
-            [outerStrokeColor]="'#78C000'"
-            [innerStrokeColor]="'#C7E596'"
-            [animation]="true"
-            [animationDuration]="1000"
-        ></circle-progress>
-    </div>
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-        <circle-progress
-            [percent]="50"
-            [radius]="100"
-            [imageSrc]="'../../../assets/iconos/eng.png'"
-            [showImage]="true"
-            [imageHeight]="100"
-            [imageWidth]="100"
-            [backgroundColor]="'#8d8d8d'"
-            [showUnits]="false"
-            [showSubtitle]="false"
-            [outerStrokeWidth]="15"
-            [innerStrokeWidth]="5"
-            [outerStrokeColor]="'#78C000'"
-            [innerStrokeColor]="'#C7E596'"
-            [animation]="true"
-            [animationDuration]="1000"
-        ></circle-progress>
-    </div>
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-        <circle-progress
-            [percent]="50"
-            [radius]="100"
-            [imageSrc]="'../../../assets/iconos/grupal.png'"
-            [showImage]="true"
-            [imageHeight]="100"
-            [imageWidth]="100"
-            [backgroundColor]="'#8d8d8d'"
-            [showUnits]="false"
-            [showSubtitle]="false"
-            [outerStrokeWidth]="15"
-            [innerStrokeWidth]="5"
-            [outerStrokeColor]="'#78C000'"
-            [innerStrokeColor]="'#C7E596'"
-            [animation]="true"
-            [animationDuration]="1000"
-        ></circle-progress>
-    </div>
 </div>

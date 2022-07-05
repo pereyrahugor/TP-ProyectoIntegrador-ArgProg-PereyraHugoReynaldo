@@ -43,12 +43,16 @@ public class SkillController {
     @PutMapping ("Habilidad/Editar/{id}")
     public Skill editSkill (@PathVariable Long id,
                             @RequestParam("imgHabilidad")    String newImgSkill,
+                            @RequestParam("colorInterno")    String newColorIn,
+                            @RequestParam("colorExterno")    String newColorOut,
                             @RequestParam("nombreHabilidad") String newNameSkill,
                             @RequestParam("progreso")        int newProgress) {
         
         Skill skill = iskillService.findSkill(id);
         
         skill.setImgSkill(newImgSkill);
+        skill.setColorIn(newColorIn);
+        skill.setColorOut(newColorOut);
         skill.setNameSkill(newNameSkill);
         skill.setProgress(newProgress);
         
