@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@CrossOrigin (origins = "http://localhost:4200/")
+@CrossOrigin (origins = "http://localhost:4200")
 public class ExperienceController {
     @Autowired IExperienceService iexperienceService;
     
@@ -45,16 +45,16 @@ public class ExperienceController {
     
     @PutMapping ("Experiencia/Editar/{id}")
     public Experience editExperience (@PathVariable Long id,
-                                    @RequestParam("imgEmpresa")        String newImgBus,
-                                    @RequestParam("empresa")           String newBusiness,
-                                    @RequestParam("puesto")            String newPosition,
-                                    @RequestParam("anioIngreso")       Date newYearIn,
-                                    @RequestParam("anioEgreso")        Date newYearOut,
-                                    @RequestParam("descripcionPuesto") String newDescriptionPosition) {
+                                    @RequestParam("imgImgBusiness")        String newImgBusiness,
+                                    @RequestParam("Business")           String newBusiness,
+                                    @RequestParam("Position")            String newPosition,
+                                    @RequestParam("YearIn")       Date newYearIn,
+                                    @RequestParam("YearOut")        Date newYearOut,
+                                    @RequestParam("DescriptionPosition") String newDescriptionPosition) {
         
         Experience experience = iexperienceService.findExperience(id);
         
-        experience.setImgBusiness(newImgBus);
+        experience.setImgBusiness(newImgBusiness);
         experience.setBusiness(newBusiness);
         experience.setPosition(newPosition);
         experience.setYearIn(newYearIn);

@@ -1,19 +1,19 @@
 export class skill{
 
     id?: number;
-    imgHabilidad: String;
-    colorInterno: String;
-    colorExterno: String;
-    nombreHabilidad: String;
-    progreso: number;
+    imgSkill: String;
+    colorIn: String;
+    colorOut: String;
+    nameSkill: String;
+    progress: number;
 
-    constructor (imgHabilidad: String, colorInterno: String, colorExterno: String, nombreHabilidad: String, progreso: number) {
+    constructor (imgSkill: String, colorIn: String, colorOut: String, nameSkill: String, progress: number) {
 
-        this.imgHabilidad = imgHabilidad;
-        this.colorInterno = colorInterno;
-        this.colorExterno = colorExterno;
-        this.nombreHabilidad = nombreHabilidad;
-        this.progreso = progreso;
+        this.imgSkill = imgSkill;
+        this.colorIn = colorIn;
+        this.colorOut = colorOut;
+        this.nameSkill = nameSkill;
+        this.progress = progress;
 
     }
 

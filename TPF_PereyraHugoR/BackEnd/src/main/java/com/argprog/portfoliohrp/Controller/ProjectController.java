@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@CrossOrigin ("http://localhost:4200/")
+@CrossOrigin ("http://localhost:4200")
 public class ProjectController {
     @Autowired IProjectService iprojectService;
     
@@ -44,10 +44,10 @@ public class ProjectController {
     
     @PutMapping ("Proyectos/Editar/{id}")
     public Project editProject (@PathVariable Long id,
-                                @RequestParam("imgProyecto")         String newImgProject,
-                                @RequestParam("nombreProyecto")      String newNameProject,
-                                @RequestParam("descripcionProyecto") String newDescriptionProject,
-                                @RequestParam("linkProyecto")        String newLinkProject) {
+                                @RequestParam("ImgProject")         String newImgProject,
+                                @RequestParam("NameProject")      String newNameProject,
+                                @RequestParam("DescriptionProject") String newDescriptionProject,
+                                @RequestParam("LinkProject")        String newLinkProject) {
         
         Project project = iprojectService.findProject(id);
         

@@ -1,20 +1,19 @@
 export class education {
     
     id?: number;
-    imgInstituto: string;
-    titulo: string;
-    anioCursado: Date;
-    duracion: string;
-    descripcionEdu: string;
+    imgInstitute: string;
+    title: string;
+    yearStudied: Date;
+    duration: string;
+    descriptionEducation: string;
 
-    constructor (imgInstituto: string, titulo: string, anioCursado: Date,
-                 duracion: string, descripcionEdu: string) {
+    constructor (imgInstitute: string, title: string, yearStudied: Date, duration: string, descriptionEducation: string) {
 
-        this.imgInstituto = imgInstituto;
-        this.titulo = titulo;
-        this.anioCursado = anioCursado;
-        this.duracion = duracion;
-        this.descripcionEdu = descripcionEdu;
+        this.imgInstitute = imgInstitute;
+        this.title = title;
+        this.yearStudied = yearStudied;
+        this.duration = duration;
+        this.descriptionEducation = descriptionEducation;
     }
 
 }

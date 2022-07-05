@@ -21,13 +21,18 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@CrossOrigin (origins = "http://localhost:4200/")
+@CrossOrigin (origins = "http://localhost:4200")
 public class PersonaController {
     @Autowired IPersonaService ipersonaService;
     
-    @GetMapping ("Personas/Buscar")
+    @GetMapping ("Personas/Listar")
     public List<Persona> getPersona(){
         return ipersonaService.getPersona();
+    }
+    
+    @GetMapping ("Personas/Buscar")
+    public Persona findPersona(){
+        return ipersonaService.findPersona((long) 1);
     }
     
     @PostMapping ("Personas/Crear")
@@ -37,31 +42,31 @@ public class PersonaController {
     }
     
     @DeleteMapping ("Personas/Borrar/{id}")
-    public String deletePersona (@PathVariable Long id){
+    public String deletePersona (@PathVariable long id){
         ipersonaService.deletePersona(id);
         return "Persona id " + id + " fue Eliminada con exito!";
     }
     
     @PutMapping ("Personas/Editar/{id}")
-    public Persona editPersona (@PathVariable Long id,
-                                @RequestParam("nombre")      String newName,
-                                @RequestParam("apellido")    String newLastName,
-                                @RequestParam("texto")       String newtext,
-                                @RequestParam("descripcion") String newDescription,
-                                @RequestParam("imgPerfil")   String newImgP,
-                                @RequestParam("imgBanner")   String newImgB,
-                                @RequestParam("pais")        String newCountry,
-                                @RequestParam("provincia")   String newEstate,
-                                @RequestParam("contacto")    String newContact){
+    public Persona editPersona (@PathVariable long id,
+                                @RequestParam("Name")        String newName,
+                                @RequestParam("LastName")    String newLastName,
+                                @RequestParam("Text")        String newText,
+                                @RequestParam("Description") String newDescription,
+                                @RequestParam("ImgPerfil")   String newImgPerfil,
+                                @RequestParam("ImgBanner")   String newImgBanner,
+                                @RequestParam("Country")     String newCountry,
+                                @RequestParam("Estate")      String newEstate,
+                                @RequestParam("Contact")     String newContact){
         
         Persona persona = ipersonaService.findPersona(id);
         
         persona.setName(newName);
         persona.setLastName(newLastName);
-        persona.setText(newtext);
+        persona.setText(newText);
         persona.setDescription(newDescription);
-        persona.setImgPerfil(newImgP);
-        persona.setImgBanner(newImgB);
+        persona.setImgPerfil(newImgPerfil);
+        persona.setImgBanner(newImgBanner);
         persona.setCountry(newCountry);
         persona.setEstate(newEstate);
         persona.setContact(newContact);

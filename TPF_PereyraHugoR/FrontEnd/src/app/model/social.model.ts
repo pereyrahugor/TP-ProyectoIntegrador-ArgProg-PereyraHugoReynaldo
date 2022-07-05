@@ -1,15 +1,15 @@
 export class social {
 
     id?: number;
-    imgRed: String;
-    nombreRed: String;
-    linkRed: String;
+    imgSocial: String;
+    nameSocial: String;
+    linkSocial: String;
 
-    constructor (imgRed: String, nombreRed: String, linkRed: String) {
+    constructor (imgSocial: String, nameSocial: String, linkSocial: String) {
 
-        this.imgRed = imgRed;
-        this.nombreRed = nombreRed;
-        this.linkRed = linkRed;
+        this.imgSocial = imgSocial;
+        this.nameSocial = nameSocial;
+        this.linkSocial = linkSocial;
     }
 
 }

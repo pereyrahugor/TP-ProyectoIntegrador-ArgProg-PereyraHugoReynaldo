@@ -1,22 +1,22 @@
 export class experience {
 
     id?: number;
-    imgEmpresa: string;
-    empresa: string;
-    puesto: string;
-    anioIngreso: Date;
-    anioEgreso: Date;
-    descripcionPuesto: String;
+    imgBusiness: string;
+    business: string;
+    position: string;
+    yearIn: Date;
+    yearOut: Date;
+    descriptionPosition: String;
 
-    constructor (imgEmpresa: string, empresa: string, puesto: string,
-                 anioIngreso: Date, anioEgreso: Date, descripcionPuesto: String) {
+    constructor (imgBusiness: string, business: string, position: string,
+                 yearIn: Date, yearOut: Date, descriptionPosition: String) {
         
-        this.imgEmpresa = imgEmpresa;
-        this.empresa = empresa;
-        this.puesto = puesto;
-        this.anioIngreso = anioIngreso;
-        this.anioEgreso = anioEgreso;
-        this.descripcionPuesto = descripcionPuesto;
+        this.imgBusiness = imgBusiness;
+        this.business = business;
+        this.position = position;
+        this.yearIn = yearIn;
+        this.yearOut = yearOut;
+        this.descriptionPosition = descriptionPosition;
         }
 
 }

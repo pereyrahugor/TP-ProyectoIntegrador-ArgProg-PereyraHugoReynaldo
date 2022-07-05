@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@CrossOrigin (origins = "http://localhost:4200/")
+@CrossOrigin (origins = "http://localhost:4200")
 public class EducationController {
     @Autowired IEducationService ieducationService;
     
@@ -45,17 +45,17 @@ public class EducationController {
     
     @PutMapping ("Educacion/Editar/{id}")
     public Education editEducation (@PathVariable Long id,
-                                    @RequestParam("imgInstituto")      String newImgI,
-                                    @RequestParam("titulo")            String newTitle,
-                                    @RequestParam("anioCursado")       Date newYearEstudied,
-                                    @RequestParam("duracion")          String newDuration,
-                                    @RequestParam("descripcionEdu")    String newDescriptionEducation) {
+                                    @RequestParam("ImgInstitute")            String newImgInstitute,
+                                    @RequestParam("Title")                   String newTitle,
+                                    @RequestParam("YearStudied")            Date newYearStudied,
+                                    @RequestParam("Duration")                String newDuration,
+                                    @RequestParam("DescriptionEducation")    String newDescriptionEducation) {
         
         Education education = ieducationService.findEducation(id);
         
-        education.setImgInstitute(newImgI);
+        education.setImgInstitute(newImgInstitute);
         education.setTitle(newTitle);
-        education.setYearEstudied(newYearEstudied);
+        education.setYearStudied(newYearStudied);
         education.setDuration(newDuration);
         education.setDescriptionEducation(newDescriptionEducation);
 

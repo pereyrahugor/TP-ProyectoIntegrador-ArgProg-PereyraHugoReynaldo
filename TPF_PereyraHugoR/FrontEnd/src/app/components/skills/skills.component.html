@@ -2,12 +2,12 @@
     <h1>Hard & Soft Skills</h1>
     <ul>
         <li>
-        <h1>{{skill.nombreHabilidad}}</h1>
+        <h1>{{skill.nameSkill}}</h1>
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                 <circle-progress
-                    [percent]="skill.progreso"
+                    [percent]="skill.progress"
                     [radius]="100"
-                    [imageSrc]="'{{skill.imgHabilidad}}'"
+                    [imageSrc]="'{{skill.imgSkill}}'"
                     [showImage]="true"
                     [imageHeight]="100"
                     [imageWidth]="100"
@@ -16,8 +16,8 @@
                     [showSubtitle]="false"
                     [outerStrokeWidth]="15"
                     [innerStrokeWidth]="5"
-                    [outerStrokeColor]="'{{skill.colorExterno}}'"
-                    [innerStrokeColor]="'{{skill.colorInterno}}'"
+                    [outerStrokeColor]="'{{skill.colorOut}}'"
+                    [innerStrokeColor]="'{{skill.colorIn}}'"
                     [animation]="true"
                     [animationDuration]="1000"
                 ></circle-progress>

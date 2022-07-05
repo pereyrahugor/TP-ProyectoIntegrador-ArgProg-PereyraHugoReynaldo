@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@CrossOrigin ("http://localhost:4200/")
+@CrossOrigin ("http://localhost:4200")
 public class SocialController {
         @Autowired ISocialService isocialService;
     
@@ -44,9 +44,9 @@ public class SocialController {
     
     @PutMapping ("RedesSociales/Editar/{id}")
     public Social editSocial (@PathVariable Long id,
-                              @RequestParam("imgRed")    String newImgSocial,
-                              @RequestParam("nombreRed") String newNameSocial,
-                              @RequestParam("linkRed")   String newLinkSocial) {
+                              @RequestParam("ImgSocial")    String newImgSocial,
+                              @RequestParam("NameSocial") String newNameSocial,
+                              @RequestParam("LinkSocial")   String newLinkSocial) {
         
         Social social = isocialService.findSocial(id);
         

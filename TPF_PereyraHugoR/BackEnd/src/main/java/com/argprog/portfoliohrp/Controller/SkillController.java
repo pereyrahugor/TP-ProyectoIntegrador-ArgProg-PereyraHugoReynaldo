@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@CrossOrigin ("http://localhost:4200/")
+@CrossOrigin ("http://localhost:4200")
 public class SkillController {
     @Autowired ISkillService iskillService;
     
@@ -44,11 +44,11 @@ public class SkillController {
     
     @PutMapping ("Habilidad/Editar/{id}")
     public Skill editSkill (@PathVariable Long id,
-                            @RequestParam("imgHabilidad")    String newImgSkill,
-                            @RequestParam("colorInterno")    String newColorIn,
-                            @RequestParam("colorExterno")    String newColorOut,
-                            @RequestParam("nombreHabilidad") String newNameSkill,
-                            @RequestParam("progreso")        int newProgress) {
+                            @RequestParam("ImgSkill")    String newImgSkill,
+                            @RequestParam("ColorIn")    String newColorIn,
+                            @RequestParam("ColorOut")    String newColorOut,
+                            @RequestParam("NameSkill") String newNameSkill,
+                            @RequestParam("Progress")        int newProgress) {
         
         Skill skill = iskillService.findSkill(id);
         

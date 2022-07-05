@@ -32,7 +32,7 @@ public class Education{
     
     @NotNull
     @Size(min = 1, max = 50, message="no cumple con la longitud")
-    private Date yearEstudied;
+    private Date yearStudied;
     
     @NotNull
     @Size(min = 1, max = 50, message="no cumple con la longitud")
