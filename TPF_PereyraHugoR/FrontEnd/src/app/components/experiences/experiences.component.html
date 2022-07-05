@@ -1,17 +1,14 @@
 <div class="row">
     <h1>Experiencia Laboral</h1>
-        <div class="col-sm-12 col-md-12 col-lg-12"></div>
-        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-            <ul>
-                <li>
-                    <img src="{{experience.imgBusiness}}" class="image-fluid" id="LogoBusiness">
-                    <h1>{{experience.business}}</h1>
-                    <h2>{{experience.position}}</h2>
-                    <h3>{{experience.yearIn | date:'dd/MM/yyyy'}} - {{experience.yearOut | date:'dd/MM/yyyy'}}</h3>
-                </li>
-                <p>
-                    {{experience.descriptionPosition}}
-                </p>
-            </ul>
+        <div class="container" id="containerTitulo">
+            <img src="{{experience.imgBusiness}}" class="image-fluid" id="LogoBusiness">
+            <h1>{{experience.business}}</h1>
+        </div>
+        <div class="container">
+            <h4>Desde: {{experience.yearIn | date:'dd/MM/yyyy'}} - Hasta: {{experience.yearOut | date:'dd/MM/yyyy'}}</h4>
+            <h2>{{experience.position}}</h2>
+            <p>
+                {{experience.descriptionPosition}}
+            </p>
         </div>
 </div>
