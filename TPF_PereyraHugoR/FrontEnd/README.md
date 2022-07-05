@@ -25,3 +25,20 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+Notas de base de datos
+
+Nombre base: portfoliohrp
+clave trabajo:""
+clave casa:"Destiny22017@"
+
+query datos tabla person
+
+insert into persona (id, contact, country, description, estate, img_banner, img_perfil, last_name, name, text)
+					values(1, "pereyrahugor@gmail.com", "Argentina", "Asesor en Tegnologia de Gestión", "Buenos Aires",
+							"https://es.dreamstime.com/banner-de-desarrollo-web-concepto-c%C3%B3digo-sitio-programaci%C3%B3n-conjuntos-completos-aplicaci%C3%B3n-seguridad-pruebas-plataforma-image209521403",
+                            "https://icon-library.com/icon/icon-ninja-5.html",
+                            "Pereyra","Hugo Reynaldo","FullStack Developer Jr");
+                            
+select * from persona
+
