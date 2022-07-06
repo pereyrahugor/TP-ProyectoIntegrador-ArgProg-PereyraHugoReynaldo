@@ -71,3 +71,11 @@ insert into education (id, description_education, duration, id_persona, img_inst
 								"160 hs",1,"https://i.ibb.co/pxQj5ZV/ungs.png","Posgrado - Asesor en Tegnologías de Gestión","2021-11-01");
                                 
 select * from education;
+
+insert into social (id, id_persona, img_social, link_social, name_social)
+					values(1,1,"https://i.ibb.co/DGPSS08/github.png","https://github.com/pereyrahugor","GitHub");
+insert into social (id, id_persona, img_social, link_social, name_social)
+					values(2,1,"https://i.ibb.co/hsfHzRt/linkedin.png","https://www.linkedin.com/in/hugo-pereyra-hrp","Linkedin");
+                    
+select * from social;
+

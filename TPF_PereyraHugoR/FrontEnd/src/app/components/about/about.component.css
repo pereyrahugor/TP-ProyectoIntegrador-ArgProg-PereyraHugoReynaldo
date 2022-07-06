@@ -2,7 +2,7 @@
     padding: 10px
 }
 div{
-    background-color: #1d1d1d;
+    background-color: #010d19;
     text-align: center;
     color: white;
 }
@@ -13,12 +13,13 @@ div{
 /*Estilo foto perfil*/
 @media (min-width: 576px){
     #perfil{
-        position:absolute;
+        position: absolute;
         width: 12%;
         border-radius: 100%;
         box-shadow: 3px 3px 3px gray;
-        left: 2%;
-        top: 400px;
+        left: 3%;
+        top: 300px;
+        max-height: 352px;
     }
 }
 @media (max-width: 575px){
