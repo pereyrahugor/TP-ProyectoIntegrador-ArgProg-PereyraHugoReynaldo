@@ -9,7 +9,7 @@ import { SocialService } from 'src/app/service/social.service';
 })
 export class LogoArgProgComponent implements OnInit {
 
-  social: social = new social("", "", "");
+  social: social[] = [];
 
   constructor(public socialService: SocialService) { }
 

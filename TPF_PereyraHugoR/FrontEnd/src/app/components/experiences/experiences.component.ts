@@ -9,7 +9,7 @@ import { ExperienceService } from 'src/app/service/experience.service';
 })
 export class ExperiencesComponent implements OnInit {
 
-  experience: experience = new experience("", "", "", new Date(), new Date(), "");
+  experience: experience[] = [];
 
   constructor(public experienceService: ExperienceService) { }
 

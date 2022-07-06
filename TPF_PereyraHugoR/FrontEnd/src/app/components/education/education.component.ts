@@ -9,7 +9,7 @@ import { EducationService } from 'src/app/service/education.service';
 })
 export class EducationComponent implements OnInit {
 
-  education: education = new education("", "", new Date(), "", "");
+  education: education[] = [];
 
   constructor(public educationService: EducationService) { }
 
