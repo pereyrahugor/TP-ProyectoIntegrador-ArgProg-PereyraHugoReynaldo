@@ -1,17 +1,12 @@
 <div class="row">
     <h1>Educación y Estudios Realizados</h1>
-        <div class="col-sm-2 col-md-2 col-lg-2"></div>
-        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-            <ul>
-                <li>
-                    <img src="{{education.imgInstitute}}" class="image-fluid">
-                    <h1>{{education.title}}</h1>
-                    <h3>{{education.yearStudied}}</h3>
-                    <h3>{{education.duration}}</h3>
-                </li>
-                <p>
-                    {{education.descriptionEducation}}
-                </p>
-            </ul>
-        </div>
+    <div class="container">
+        <img src="{{education.imgInstitute}}" class="image-fluid" id="LogoInstitute">
+        <h1>{{education.title}}</h1>
+    </div>
+    <div class="container">
+        <h4>{{education.descriptionEducation}}</h4>
+        <h4>Duración Cursada:{{education.duration}}</h4>
+        <h5>Fecha de Finalización: {{education.yearStudied | date:'MM/yyyy'}}</h5>
+    </div>
 </div>
