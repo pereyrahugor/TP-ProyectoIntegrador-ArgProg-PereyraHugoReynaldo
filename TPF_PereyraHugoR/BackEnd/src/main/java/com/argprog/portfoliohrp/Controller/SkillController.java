@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SkillController {
     @Autowired ISkillService iskillService;
     
-    @GetMapping ("Habilidades/Buscar")
+    @GetMapping ("Habilidades/Listar")
     public List<Skill> getSkill(){
         return iskillService.getSkill();
     }

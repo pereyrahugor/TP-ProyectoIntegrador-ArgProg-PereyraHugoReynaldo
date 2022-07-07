@@ -1,7 +1,7 @@
 .row{
     align-items: center;
     background-color: #010d19;
-    color: white;
+    color: #79daf8;
     padding: 20px;
 }
 div{
@@ -10,4 +10,15 @@ div{
 h1{
     text-align: left;
     padding: 20px;
+    color: white
+}
+.container{
+    width:33%;
+    border-width:4px;
+    border-style:groove;
+    border-color:#0300b3;
+    border-radius:22px;
+}
+h2{
+    color: white;
 }

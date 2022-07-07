@@ -1,13 +1,13 @@
 export class skill{
 
     id?: number;
-    imgSkill: String;
-    colorIn: String;
-    colorOut: String;
-    nameSkill: String;
+    imgSkill: string;
+    colorIn: string;
+    colorOut: string;
+    nameSkill: string;
     progress: number;
 
-    constructor (imgSkill: String, colorIn: String, colorOut: String, nameSkill: String, progress: number) {
+    constructor (imgSkill: string, colorIn: string, colorOut: string, nameSkill: string, progress: number) {
 
         this.imgSkill = imgSkill;
         this.colorIn = colorIn;

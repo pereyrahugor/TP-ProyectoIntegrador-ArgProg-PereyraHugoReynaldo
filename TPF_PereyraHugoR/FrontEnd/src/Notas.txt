@@ -79,3 +79,18 @@ insert into social (id, id_persona, img_social, link_social, name_social)
                     
 select * from social;
 
+insert into skill (id, color_in, color_out, id_persona, img_skill, name_skill, progress)
+					values(1,"#f16524","#e54c21",1,"https://i.ibb.co/ft46jh6/html.png","html", 70);
+insert into skill (id, color_in, color_out, id_persona, img_skill, name_skill, progress)
+					values(2,"#3399ff","#2277ff",1,"https://i.ibb.co/wWbL6c6/CSS.png","css", 50);
+insert into skill (id, color_in, color_out, id_persona, img_skill, name_skill, progress)
+					values(3,"#ffd83a","#dab92d",1,"https://i.ibb.co/q52b1Rt/js.png","javascript", 85);
+insert into skill (id, color_in, color_out, id_persona, img_skill, name_skill, progress)
+					values(4,"#79daf8","#0300b3",1,"https://i.ibb.co/dg0jhZJ/git.png","github", 70);
+insert into skill (id, color_in, color_out, id_persona, img_skill, name_skill, progress)
+					values(5,"#79daf8","#0300b3",1,"https://i.ibb.co/0M6rtRY/eng.png","ingles", 50);
+insert into skill (id, color_in, color_out, id_persona, img_skill, name_skill, progress)
+					values(6,"#79daf8","#0300b3",1,"https://i.ibb.co/m6b8C1F/grupal.png","equipo", 80);
+                    
+select * from skill
+
