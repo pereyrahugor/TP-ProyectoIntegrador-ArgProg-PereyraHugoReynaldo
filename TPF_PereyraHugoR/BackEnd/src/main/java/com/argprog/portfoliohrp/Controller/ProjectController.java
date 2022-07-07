@@ -25,9 +25,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProjectController {
     @Autowired IProjectService iprojectService;
     
-    @GetMapping ("Proyectos/Buscar")
-    public List<Project> getSocial(){
+    @GetMapping ("Proyectos/Listar")
+    public List<Project> getProject(){
         return iprojectService.getProject();
+    }
+    
+        @GetMapping ("Proyectos/Buscar")
+    public Project findProject(long id){
+        return iprojectService.findProject(id);
     }
     
     @PostMapping ("Proyectos/Crear")
@@ -43,9 +48,9 @@ public class ProjectController {
     }
     
     @PutMapping ("Proyectos/Editar/{id}")
-    public Project editProject (@PathVariable Long id,
+    public Project editProject (@PathVariable long id,
                                 @RequestParam("ImgProject")         String newImgProject,
-                                @RequestParam("NameProject")      String newNameProject,
+                                @RequestParam("NameProject")        String newNameProject,
                                 @RequestParam("DescriptionProject") String newDescriptionProject,
                                 @RequestParam("LinkProject")        String newLinkProject) {
         

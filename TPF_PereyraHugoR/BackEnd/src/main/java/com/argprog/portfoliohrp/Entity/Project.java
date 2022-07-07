@@ -18,10 +18,10 @@ import lombok.Setter;
 public class Project{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long id;
+    private long id;
     
     @NotNull
-    private Long idPersona;
+    private long idPersona;
     
     private String imgProject;
     
@@ -30,7 +30,6 @@ public class Project{
     private String nameProject;
     
     @NotNull
-    @Size(min = 1, max = 50, message="no cumple con la longitud")
     private String descriptionProject;
     
     @NotNull

@@ -6,29 +6,17 @@ div{
     text-align: center;
     color: white;
 }
-/*Etiqueta nombre*/
 #nombre{
     font-weight: bold;
 }
-/*Estilo foto perfil*/
-@media (min-width: 576px){
-    #perfil{
+#perfil{
         position: absolute;
-        width: 12%;
+        width: 10%;
         border-radius: 100%;
-        box-shadow: 3px 3px 3px gray;
-        left: 3%;
-        top: 300px;
-        max-height: 352px;
-    }
+        left: 5%;
+        top: 350px;
+        max-height: 300px;
 }
-@media (max-width: 575px){
-    #perfil{
-        position:absolute;
-        width: 30%;
-        border-radius: 100%;
-        box-shadow: 3px 3px 3px white;
-        left: 35%;
-        top: 400px;
-    }
+.container{
+    width: 30%;
 }

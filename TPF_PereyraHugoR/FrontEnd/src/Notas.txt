@@ -7,7 +7,7 @@ clave casa:"Destiny22017@"
 query datos tabla person
 
 insert into persona (id, contact, country, description, estate, img_banner, img_perfil, last_name, name, text)
-					values(1, "pereyrahugor@gmail.com", "Argentina", "Asesor en Tegnologia de Gestión", "Buenos Aires",
+					values(1, "pereyrahugor@gmail.com", "Argentina", "Jefe de Calidad y Mejora Continua. Asesor en Tecnoligías de Gestión. Análisis y mejora de procesos. Desarrollo de automatizaciones en Google App Script, FullStack, SQL y Arduino.", "Buenos Aires",
 							"https://i.ibb.co/YPg3y4t/banner-3.png",
                             "https://i.ibb.co/qYLRdwT/Whats-App-Image-2022-07-06-at-10-19-17-AM.jpg",
                             "Pereyra","Hugo Reynaldo","FullStack Developer Jr");
@@ -94,3 +94,7 @@ insert into skill (id, color_in, color_out, id_persona, img_skill, name_skill, p
                     
 select * from skill
 
+insert into project (id, description_project, id_persona, img_project, link_project, name_project)
+					values(1,"Este mismo porfolio fue creado apartir de los conocimientos adquiridos en este proyecto, la idea es ir perfeccionandolo y completandolo con el transcurso de nuevos proyectos",1,"https://i.ibb.co/xDznx6G/Arg-Prog-Logo.png","https://i.ibb.co/xDznx6G/Arg-Prog-Logo.png","Argentina Programa - Porfolio Online");
+                    
+select * from project;

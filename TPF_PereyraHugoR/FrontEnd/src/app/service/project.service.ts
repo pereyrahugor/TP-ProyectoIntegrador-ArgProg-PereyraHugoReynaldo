@@ -12,8 +12,8 @@ export class ProjectService {
 
   constructor (private http: HttpClient) { }
 
-  public getProject(): Observable<project> {
-    return this.http.get<project>(this.apiURL+ 'Buscar');
+  public getProject(): Observable<project[]> {
+    return this.http.get<project[]>(this.apiURL+ 'Listar');
   }
 
   public setProject(): Observable<project> {

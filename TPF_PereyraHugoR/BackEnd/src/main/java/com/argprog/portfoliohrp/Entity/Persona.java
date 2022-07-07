@@ -32,7 +32,6 @@ public class Persona{
     private String lastName;
     
     @NotNull
-    @Size(min = 1, max = 50, message="no cumple con la longitud")
     private String description;
     
     private String imgPerfil;
