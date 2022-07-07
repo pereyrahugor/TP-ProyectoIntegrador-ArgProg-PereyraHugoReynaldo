@@ -1,16 +1,18 @@
 <div class="row">
-     <div class="container">
-        <div class="logo">
-            <img src="../../../assets/ArgProgLogo.png" id="ArgProgLogo">
-        </div>
-        <div class="rs">
+    <div class="container">
+     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" id="containerLogo">
+        <img src="../../../assets/ArgProgLogo.png" id="ArgProgLogo">
+    </div>
+    <div class="container col-xs-2 col-sm-2 col-md-2 col-lg-2" id="rs">
+        <div *ngFor="let social of social">
             <a href="{{social.linkSocial}}"
             target="_blank">
                 <img src="{{social.imgSocial}}"
                 id="icon-github"
                 [hspace]="5">
             </a>
-            <button type="button" id="login" class="btn btn-outline-danger">Login</button>
         </div>
+        <button type="button" id="login" class="btn btn-outline-danger">Login</button>
+    </div>
     </div>
 </div>

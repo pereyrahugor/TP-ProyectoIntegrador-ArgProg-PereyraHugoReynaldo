@@ -12,8 +12,8 @@ export class ExperienceService {
 
   constructor (private http: HttpClient) { }
 
-  public getExperience(): Observable<experience> {
-    return this.http.get<experience>(this.apiURL+ 'Buscar');
+  public getExperience(): Observable<experience[]> {
+    return this.http.get<experience[]>(this.apiURL+ 'Listar');
   }
 
   public setExperience(): Observable<experience> {

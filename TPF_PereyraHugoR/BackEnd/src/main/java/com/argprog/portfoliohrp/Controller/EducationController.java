@@ -26,9 +26,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class EducationController {
     @Autowired IEducationService ieducationService;
     
-    @GetMapping ("Educacion/Buscar")
+    @GetMapping ("Educacion/Listar")
     public List<Education> getEducation(){
         return ieducationService.getEducation();
+    }
+    
+        @GetMapping ("Educacion/Buscar")
+    public Education findEducation(){
+        return ieducationService.findEducation((long) 1);
     }
     
     @PostMapping ("Educacion/Crear")
@@ -47,7 +52,7 @@ public class EducationController {
     public Education editEducation (@PathVariable Long id,
                                     @RequestParam("ImgInstitute")            String newImgInstitute,
                                     @RequestParam("Title")                   String newTitle,
-                                    @RequestParam("YearStudied")            Date newYearStudied,
+                                    @RequestParam("YearStudied")             String newYearStudied,
                                     @RequestParam("Duration")                String newDuration,
                                     @RequestParam("DescriptionEducation")    String newDescriptionEducation) {
         

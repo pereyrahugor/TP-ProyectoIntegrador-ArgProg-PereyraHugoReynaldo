@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SocialController {
         @Autowired ISocialService isocialService;
     
-    @GetMapping ("RedesSociales/Buscar")
+    @GetMapping ("RedesSociales/Listar")
     public List<Social> getSocial(){
         return isocialService.getSocial();
     }

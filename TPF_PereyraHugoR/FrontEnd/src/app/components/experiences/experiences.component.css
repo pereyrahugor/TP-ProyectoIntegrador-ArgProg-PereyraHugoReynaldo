@@ -1,12 +1,13 @@
 .row{
     padding: 50px;
-    background-color: #1d1d1d;
-    color: white;
+    background-color: #010d19;
+    color: #79daf8;
 }
 .container{
     display: inline-block;
     text-align: center;
     width: auto;
+
 }
 h4{
     padding-top: 50px;
@@ -14,4 +15,18 @@ h4{
 #LogoBusiness{
     width: 200px;
     margin: 0 auto;
+}
+#expcontainer{
+    border-width:4px;
+    border-style:groove;
+    border-color:#0300b3;
+    border-radius:22px;
+    width:80%;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+h1{
+    color: rgb(255, 255, 255);
+    padding-top: 10px;
 }

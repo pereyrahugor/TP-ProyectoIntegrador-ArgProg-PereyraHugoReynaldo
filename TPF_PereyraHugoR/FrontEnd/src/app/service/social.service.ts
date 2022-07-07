@@ -12,8 +12,8 @@ export class SocialService {
 
   constructor (private http: HttpClient) { }
 
-  public getSocial(): Observable<social> {
-    return this.http.get<social>(this.apiURL+ 'Buscar');
+  public getSocial(): Observable<social[]> {
+    return this.http.get<social[]>(this.apiURL+ 'Listar');
   }
 
   public setSocial(): Observable<social> {
