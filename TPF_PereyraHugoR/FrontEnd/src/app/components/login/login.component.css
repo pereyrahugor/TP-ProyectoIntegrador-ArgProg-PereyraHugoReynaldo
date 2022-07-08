@@ -37,11 +37,10 @@
   background-color: hsla(0, 0%, 100%, 0.9) !important;
   backdrop-filter: saturate(200%) blur(25px);
 }
-#loginButton{
-padding-left: 50%;
-padding-right: 42%;
-}
 #section{
     padding-top: 230px;
     padding-bottom: 230px;
+}
+#loginButton{
+  margin-right: 60%;
 }
