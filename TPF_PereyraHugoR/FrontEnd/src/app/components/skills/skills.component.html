@@ -1,6 +1,6 @@
 <div class="row">
     <h1>Habilidades </h1>
-    <div class="container" *ngFor="let skill of skill">
+    <div class="btn btn-outline-primary container" *ngFor="let skill of skill">
         <h2>{{skill.nameSkill}}</h2>
         <circle-progress
                 [percent]="skill.progress"

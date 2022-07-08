@@ -8,7 +8,7 @@ query datos tabla person
 
 insert into persona (id, contact, country, description, estate, img_banner, img_perfil, last_name, name, text)
 					values(1, "pereyrahugor@gmail.com", "Argentina", "Jefe de Calidad y Mejora Continua. Asesor en Tecnoligías de Gestión. Análisis y mejora de procesos. Desarrollo de automatizaciones en Google App Script, FullStack, SQL y Arduino.", "Buenos Aires",
-							"https://i.ibb.co/YPg3y4t/banner-3.png",
+							"https://media.istockphoto.com/photos/3d-render-abstract-wallpaper-with-blue-pink-violet-neon-light-aurora-picture-id1226546385?k=20&m=1226546385&s=170667a&w=0&h=Ty031oa6p_J4PgLjeLTjzmcKa0ZRxUvOxVROoGZ95iU=",
                             "https://i.ibb.co/qYLRdwT/Whats-App-Image-2022-07-06-at-10-19-17-AM.jpg",
                             "Pereyra","Hugo Reynaldo","FullStack Developer Jr");
                             

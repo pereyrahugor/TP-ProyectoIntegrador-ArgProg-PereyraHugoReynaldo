@@ -15,6 +15,9 @@ import { ProjectComponent } from './components/project/project.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { Error404Component } from './components/error404/error404.component';
 
 
 @NgModule({
@@ -28,7 +31,10 @@ import { FormsModule } from '@angular/forms';
     EducationComponent,
     SkillsComponent,
     ProjectComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent,
+    LoginComponent,
+    Error404Component
   ],
   imports: [
     BrowserModule,
