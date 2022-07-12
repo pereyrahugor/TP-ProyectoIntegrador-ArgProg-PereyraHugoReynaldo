@@ -5,6 +5,7 @@ import com.argprog.portfoliohrp.Entity.Persona;
 import com.argprog.portfoliohrp.Interface.IPersonaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,18 +36,21 @@ public class PersonaController {
         return ipersonaService.findPersona((long) 1);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping ("Personas/Crear")
     public String crearPersona (@RequestBody Persona persona){
         ipersonaService.savePersona(persona);
         return "Persona creada con exito!";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping ("Personas/Borrar/{id}")
     public String deletePersona (@PathVariable long id){
         ipersonaService.deletePersona(id);
         return "Persona id " + id + " fue Eliminada con exito!";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping ("Personas/Editar/{id}")
     public Persona editPersona (@PathVariable long id,
                                 @RequestParam("Name")        String newName,

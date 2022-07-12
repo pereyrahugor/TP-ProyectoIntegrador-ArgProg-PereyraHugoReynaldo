@@ -1,7 +1,6 @@
 package com.argprog.portfoliohrp.Security.JWT;
 
 import com.argprog.portfoliohrp.Security.Service.ImpUserDetailsService;
-import com.argprog.portfoliohrp.Service.ImpEducationService;
 import java.io.IOException;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -10,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -28,6 +28,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
     @Autowired
     ImpUserDetailsService impUserDetailsService;
 
+    @Bean
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         try {
@@ -44,6 +45,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
     
+    @Bean
     private String getToken(HttpServletRequest request){
     String header=request.getHeader("Authorization");
     if(header!=null && header.startsWith("Bearer"))

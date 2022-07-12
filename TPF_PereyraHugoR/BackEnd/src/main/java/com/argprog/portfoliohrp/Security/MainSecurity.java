@@ -16,6 +16,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
  *@author perey r
@@ -30,7 +31,7 @@ public class MainSecurity extends WebSecurityConfigurerAdapter{
     ImpUserDetailsService impUserDetailsService;
     @Autowired
     JwtEntryPoint jwtEntryPoint;
-    
+   
     @Bean
     public JwtTokenFilter jwtTokenFilter(){
         return new JwtTokenFilter();
@@ -40,25 +41,27 @@ public class MainSecurity extends WebSecurityConfigurerAdapter{
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
-
+    
     @Override
     protected void configure(HttpSecurity http)throws Exception{
         http.cors().and().csrf().disable()
         .authorizeRequests()
-        .antMatchers("/authentication/**").permitAll()
+        .antMatchers("/auth/**").permitAll()
         .anyRequest().authenticated()
         .and()
         .exceptionHandling().authenticationEntryPoint(jwtEntryPoint)
         .and()
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        http.addFilterBefore(jwtTokenFilter(),UsernamePasswordAuthenticationFilter.class);
     }        
             
-
+    @Bean
     @Override
     protected AuthenticationManager authenticationManager() throws Exception {
         return super.authenticationManager();
     }
 
+    @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
@@ -68,6 +71,5 @@ public class MainSecurity extends WebSecurityConfigurerAdapter{
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(impUserDetailsService).passwordEncoder(passwordEncoder());
     }
-    
     
 }

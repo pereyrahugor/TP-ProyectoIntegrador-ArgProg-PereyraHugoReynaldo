@@ -13,11 +13,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Component;
 
 /**
  *@author pereyra.hugo.r
  *@contact pereyrahugor@gmail.com
  */
+@Component
 public class JwtProvider {
     private final static Logger logger = LoggerFactory.getLogger(JwtProvider.class);
     
@@ -29,14 +31,13 @@ public class JwtProvider {
     public String generateToken(Authentication authentication){
         PrincipalUser principalUser = (PrincipalUser) authentication.getPrincipal();
         return  Jwts.builder().setSubject(principalUser.getUsername())
-                .setIssuedAt(new Date()).setExpiration(new Date(new Date().getTime()+expiration*1000))
+                .setIssuedAt(new Date()).setExpiration(new Date(new Date().getTime()+ expiration*1000))
                 .signWith(SignatureAlgorithm.HS512, secret).compact();
     }
     
     public String getUserNameFromToken (String token){
         return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().getSubject();
     }
-    
     public boolean ValidateToken(String token){
         try{
             Jwts.parser().setSigningKey(secret).parseClaimsJws(token);

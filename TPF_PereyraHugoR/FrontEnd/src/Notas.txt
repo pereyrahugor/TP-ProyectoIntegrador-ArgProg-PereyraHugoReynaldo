@@ -98,3 +98,15 @@ insert into project (id, description_project, id_persona, img_project, link_proj
 					values(1,"Este mismo porfolio fue creado apartir de los conocimientos adquiridos en este proyecto, la idea es ir perfeccionandolo y completandolo con el transcurso de nuevos proyectos",1,"https://i.ibb.co/xDznx6G/Arg-Prog-Logo.png","https://i.ibb.co/xDznx6G/Arg-Prog-Logo.png","Argentina Programa - Porfolio Online");
                     
 select * from project;
+
+select * from user;
+
+select * from rol;
+
+select * from user_rol;
+
+INSERT INTO rol( id,rol_name)VALUES(NULL,'ROLE_ADMIN');
+INSERT INTO rol (id,rol_name)VALUES(NULL,'ROLE_USER');
+
+-- userName: ArgProgAdmin
+-- password: ArgProg5310
