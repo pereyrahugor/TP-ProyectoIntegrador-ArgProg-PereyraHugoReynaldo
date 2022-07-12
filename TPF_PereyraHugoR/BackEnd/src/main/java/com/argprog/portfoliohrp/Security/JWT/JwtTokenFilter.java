@@ -19,7 +19,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
  * @author pereyra.hugo.r
  * @contact pereyrahugor@gmail.com
  */
-public class JetTokenFilter extends OncePerRequestFilter {
+public class JwtTokenFilter extends OncePerRequestFilter {
 
     private final static Logger logger = LoggerFactory.getLogger(JwtProvider.class);
 
