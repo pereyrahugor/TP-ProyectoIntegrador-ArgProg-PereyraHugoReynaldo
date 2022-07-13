@@ -6,6 +6,7 @@ import com.argprog.portfoliohrp.Interface.IExperienceService;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,18 +37,21 @@ public class ExperienceController {
         return iexperienceService.findExperience((long) 1);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping ("Experiencia/Crear")
     public String crearEducation (@RequestBody Experience experience){
         iexperienceService.saveExperience(experience);
         return "Nueva Experiencia creada con exito!";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping ("Experiencia/Borrar/{id}")
     public String deleteExperience (@PathVariable long id){
         iexperienceService.deleteExperience(id);
         return "Experiencia id " + id + " fue Eliminada con exito!";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping ("Experiencia/Editar/{id}")
     public Experience editExperience (@PathVariable long id,
                                     @RequestParam("imgImgBusiness")        String newImgBusiness,

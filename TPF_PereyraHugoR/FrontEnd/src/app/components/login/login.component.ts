@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
  
  isLogged = false;
  isLogginFail = false;
- userLogin! : LoginUser;
+ loginUser! : LoginUser;
  nameUser! : string;
  password! : string;
  roles : string[] = [];
@@ -34,8 +34,8 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(): void{
-    this.userLogin = new LoginUser (this.nameUser, this.password);
-    this.authService.login(this.userLogin).subscribe(data =>{
+    this.loginUser = new LoginUser (this.nameUser, this.password);
+    this.authService.login(this.loginUser).subscribe(data =>{
         this.isLogged = true;
         this.isLogginFail = false;
         this.tokenService.setToken(data.token);

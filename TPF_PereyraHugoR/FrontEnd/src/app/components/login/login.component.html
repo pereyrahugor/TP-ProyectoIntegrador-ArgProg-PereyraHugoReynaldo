@@ -30,20 +30,28 @@
         ></div>
         <div class="card bg-glass">
           <div class="card-body px-4 py-5 px-md-5">
-            <form>
-              <!-- Email input -->
+            <form #f="ngForm" (ngSubmit)="onLogin()" novalidate>
+              <!-- User input -->
               <div class="form-outline mb-4">
-                <input type="email" id="usuario" class="form-control" />
-                <label class="form-label" for="usuario"
-                  >Usuario</label
-                >
+                <input 
+                  type = "email"
+                  id = "userName"
+                  name = "userName"
+                  class="form-control"
+                  [(ngModel)] = "loginUser"
+                  required
+                />
+                <label class="form-label" for="nameUser">Usuario</label>
               </div>
               <!-- Password input -->
               <div class="form-outline mb-4">
                 <input
-                  type="password"
-                  id="password"
+                  type = "password"
+                  id = "password"
+                  name = "password"
                   class="form-control"
+                  [(ngModel)] = "password"
+                  required
                 />
                 <label class="form-label" for="password">Contraseña</label>
               </div>
@@ -53,16 +61,16 @@
                   type="submit"
                   class="btn btn-primary btn-block mb-4"
                   id="loginButton"
-                >
-                  Login
-                </button>
-                  <button (click)="volver()"
+                  >Login</button>
+                <button (click)="volver()"
                   class="btn btn-primary btn-block mb-4"
                   id="volverButton"
-                >
-                  Volver
-                </button>
-            </div>
+                  >Volver</button>
+                  <button 
+                  class="btn btn-primary btn-block mb-4"
+                  id="volverButton"
+                  >Crear Cuenta</button>
+              </div>
             </form>
           </div>
         </div>

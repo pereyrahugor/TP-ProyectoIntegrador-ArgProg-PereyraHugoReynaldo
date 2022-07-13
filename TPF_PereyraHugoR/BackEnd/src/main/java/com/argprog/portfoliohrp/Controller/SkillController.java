@@ -5,6 +5,7 @@ import com.argprog.portfoliohrp.Entity.Skill;
 import com.argprog.portfoliohrp.Interface.ISkillService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,18 +31,21 @@ public class SkillController {
         return iskillService.getSkill();
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping ("Habilidades/Crear")
     public String crearSkill (@RequestBody Skill skill){
         iskillService.saveSkill(skill);
         return "Nueva Habilidad creada con exito!";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping ("Habilidades/Borrar/{id}")
     public String deleteSkill (@PathVariable Long id){
         iskillService.deleteSkill(id);
         return "Habilidad id " + id + " fue Eliminada con exito!";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping ("Habilidad/Editar/{id}")
     public Skill editSkill (@PathVariable Long id,
                             @RequestParam("ImgSkill")    String newImgSkill,

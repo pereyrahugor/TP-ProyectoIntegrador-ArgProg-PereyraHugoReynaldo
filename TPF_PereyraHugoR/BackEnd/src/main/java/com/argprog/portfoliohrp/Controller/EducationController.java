@@ -6,6 +6,7 @@ import com.argprog.portfoliohrp.Interface.IEducationService;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,17 +32,20 @@ public class EducationController {
         return ieducationService.getEducation();
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping ("Educacion/Buscar")
     public Education findEducation(){
         return ieducationService.findEducation((long) 1);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping ("Educacion/Crear")
     public String crearEducation (@RequestBody Education education){
         ieducationService.saveEducation(education);
         return "Nueva Educación creada con exito!";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping ("Educacion/Borrar/{id}")
     public String deleteEducation (@PathVariable Long id){
         ieducationService.deleteEducation(id);

@@ -5,6 +5,7 @@ import com.argprog.portfoliohrp.Entity.Social;
 import com.argprog.portfoliohrp.Interface.ISocialService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,18 +31,21 @@ public class SocialController {
         return isocialService.getSocial();
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping ("RedesSociales/Crear")
     public String crearSocial (@RequestBody Social social){
         isocialService.saveSocial(social);
         return "Nueva Red Social creada con exito!";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping ("RedesSociales/Borrar/{id}")
     public String deleteSocial (@PathVariable Long id){
         isocialService.deleteSocial(id);
         return "Red Social id " + id + " fue Eliminada con exito!";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping ("RedesSociales/Editar/{id}")
     public Social editSocial (@PathVariable Long id,
                               @RequestParam("ImgSocial")    String newImgSocial,

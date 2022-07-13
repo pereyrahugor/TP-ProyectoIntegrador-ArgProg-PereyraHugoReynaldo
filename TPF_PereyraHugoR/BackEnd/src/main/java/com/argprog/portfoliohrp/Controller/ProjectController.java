@@ -5,6 +5,7 @@ import com.argprog.portfoliohrp.Entity.Project;
 import com.argprog.portfoliohrp.Interface.IProjectService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,18 +36,21 @@ public class ProjectController {
         return iprojectService.findProject(id);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping ("Proyectos/Crear")
     public String crearProject (@RequestBody Project project){
         iprojectService.saveProject(project);
         return "Nuevo Proyecto creada con exito!";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping ("Proyectos/Borrar/{id}")
     public String deleteProject (@PathVariable Long id){
         iprojectService.deleteProject(id);
         return "Proyecto id " + id + " fue Eliminada con exito!";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping ("Proyectos/Editar/{id}")
     public Project editProject (@PathVariable long id,
                                 @RequestParam("ImgProject")         String newImgProject,
