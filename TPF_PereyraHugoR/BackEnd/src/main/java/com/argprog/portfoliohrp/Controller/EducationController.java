@@ -31,7 +31,7 @@ public class EducationController {
         return ieducationService.getEducation();
     }
     
-        @GetMapping ("Educacion/Buscar")
+    @GetMapping ("Educacion/Buscar")
     public Education findEducation(){
         return ieducationService.findEducation((long) 1);
     }

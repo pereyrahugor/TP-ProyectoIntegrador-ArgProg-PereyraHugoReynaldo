@@ -1,9 +1,9 @@
 export class NewUser {
 
-name!: String;
-userName!: String;
-email!: String;
-password!: String;
-authorities!: String[];
+name!: string;
+userName!: string;
+email!: string;
+password!: string;
+authorities!: string[];
 
 }
