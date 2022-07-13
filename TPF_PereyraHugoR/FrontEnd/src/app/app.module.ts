@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { Error404Component } from './components/error404/error404.component';
+import { TestComponent } from './components/test/test.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { Error404Component } from './components/error404/error404.component';
     FooterComponent,
     HomeComponent,
     LoginComponent,
-    Error404Component
+    Error404Component,
+    TestComponent
   ],
   imports: [
     BrowserModule,
