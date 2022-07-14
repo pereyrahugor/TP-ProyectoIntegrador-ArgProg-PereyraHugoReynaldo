@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { Error404Component } from './components/error404/error404.component';
+import { interceptorProvider } from './service/interseptor.service';
 
 
 @NgModule({
@@ -43,7 +44,7 @@ import { Error404Component } from './components/error404/error404.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [interceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

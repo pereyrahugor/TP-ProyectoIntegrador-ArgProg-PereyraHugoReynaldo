@@ -13,8 +13,18 @@
             </a>
         </div>
         <a href="/login">
-            <button type="button" id="login" class="btn btn-outline-primary">Login</button>
+            <button type="button" 
+            id="login" 
+            class="btn btn-outline-primary" 
+            *ngIf="!isLogged"
+            >Login</button>
         </a>
+        <button type="button"
+         id="logOut" 
+         class="btn btn-outline-danger" 
+         (click)="onLogOut()"
+         *ngIf="isLogged"
+         >Logout</button>
     </div>
     </div>
 </div>

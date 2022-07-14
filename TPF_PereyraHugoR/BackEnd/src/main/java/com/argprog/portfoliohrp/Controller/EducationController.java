@@ -32,7 +32,6 @@ public class EducationController {
         return ieducationService.getEducation();
     }
     
-    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping ("Educacion/Buscar")
     public Education findEducation(){
         return ieducationService.findEducation((long) 1);
