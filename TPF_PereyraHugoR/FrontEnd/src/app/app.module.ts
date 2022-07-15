@@ -19,6 +19,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { Error404Component } from './components/error404/error404.component';
 import { interceptorProvider } from './service/interseptor.service';
+import { TestsComponent } from './components/tests/tests.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { interceptorProvider } from './service/interseptor.service';
     FooterComponent,
     HomeComponent,
     LoginComponent,
-    Error404Component
+    Error404Component,
+    TestsComponent
   ],
   imports: [
     BrowserModule,
