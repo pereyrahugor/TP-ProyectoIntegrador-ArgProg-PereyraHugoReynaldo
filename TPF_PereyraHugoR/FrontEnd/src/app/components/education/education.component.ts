@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { education } from 'src/app/model/education.model';
 import { EducationService } from 'src/app/service/education.service';
+import { TokenService } from 'src/app/service/token.service';
 
 @Component({
   selector: 'app-education',
@@ -11,9 +12,22 @@ export class EducationComponent implements OnInit {
 
   education: education[] = [];
 
-  constructor(public educationService: EducationService) { }
+  constructor(public educationService: EducationService, private tokenService: TokenService) { }
+
+  isLogged = false;
 
   ngOnInit(): void {
+    this.getDataEducation();
+
+    if (this.tokenService.getToken()) {
+      this.isLogged = true;
+    } else {
+      this.isLogged = false;
+    }
+
+  }
+
+  getDataEducation(): void {
     this.educationService.getEducation().subscribe(data => {this.education = data});
   }
 

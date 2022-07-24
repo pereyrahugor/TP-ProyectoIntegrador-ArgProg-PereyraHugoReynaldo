@@ -21,7 +21,6 @@ public class Experience{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
     
-    @NotNull
     private long idPersona;
     
     private String imgBusiness;
@@ -44,5 +43,16 @@ public class Experience{
     @NotNull
     @Size(min = 1, max = 50, message="no cumple con la longitud")
     private String descriptionPosition;
-        
+
+    public Experience(String imgBusiness, String business, String position, Date yearIn, Date yearOut, String descriptionPosition) {
+        this.imgBusiness = imgBusiness;
+        this.business = business;
+        this.position = position;
+        this.yearIn = yearIn;
+        this.yearOut = yearOut;
+        this.descriptionPosition = descriptionPosition;
+    }
+    
+    
+    
 }

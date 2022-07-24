@@ -2,9 +2,10 @@
 package com.argprog.portfoliohrp.Service;
 
 import com.argprog.portfoliohrp.Entity.Experience;
-import com.argprog.portfoliohrp.Interface.IExperienceService;
 import com.argprog.portfoliohrp.Repository.IExperienceRes;
 import java.util.List;
+import java.util.Optional;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,28 +15,38 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public class ImpExperienceService implements IExperienceService{
-    @Autowired IExperienceRes iexperienceRes;
+@Transactional
+public class ImpExperienceService{
+    @Autowired
+    IExperienceRes iexperienceRes;
     
-    @Override
-    public List<Experience> getExperience() {
-        List<Experience> experience = iexperienceRes.findAll();
-        return experience;
+    public List<Experience> list(){
+        return iexperienceRes.findAll();
     }
-
-    @Override
-    public void saveExperience(Experience experience) {
+    
+    public Optional<Experience> getOne(long id){
+        return iexperienceRes.findById(id);
+    }
+    
+    public Optional<Experience> getByPosition (String position){
+        return iexperienceRes.findByPosition(position);
+    }
+    
+    public void save(Experience experience){
         iexperienceRes.save(experience);
     }
-
-    @Override
-    public void deleteExperience(long id) {
+    
+    public void delete(long id){
         iexperienceRes.deleteById(id);
     }
-
-    @Override
-    public Experience findExperience(long id) {
-        Experience experience = iexperienceRes.findById(id).orElse(null);
-        return experience;
+    
+    public boolean existById(long id){
+        return iexperienceRes.existsById(id);
     }
+    
+    public boolean existByPosition(String position){
+        return iexperienceRes.existByPosition(position);
+                
+    }
+    
 }

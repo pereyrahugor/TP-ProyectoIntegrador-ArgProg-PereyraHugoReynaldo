@@ -1,12 +1,15 @@
 
 package com.argprog.portfoliohrp.Controller;
 
+import com.argprog.portfoliohrp.DTO.ExperienceDto;
 import com.argprog.portfoliohrp.Entity.Experience;
-import com.argprog.portfoliohrp.Interface.IExperienceService;
-import java.util.Date;
+import com.argprog.portfoliohrp.Security.Controller.Mensaje;
+import com.argprog.portfoliohrp.Service.ImpExperienceService;
 import java.util.List;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -23,57 +26,59 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
+@RequestMapping ("/Experiencia")
 @CrossOrigin (origins = "http://localhost:4200")
 public class ExperienceController {
-    @Autowired IExperienceService iexperienceService;
+    @Autowired 
+    ImpExperienceService impExperienceService;
     
-    @GetMapping ("Experiencia/Listar")
-    public List<Experience> getExperience(){
-        return iexperienceService.getExperience();
+    
+    @GetMapping ("/Listar")
+    public ResponseEntity <List<Experience>> list(){
+        List<Experience> list = impExperienceService.list();
+        return new ResponseEntity (list, HttpStatus.OK);
     }
     
-    @GetMapping ("Experiencia/Buscar")
-    public Experience findExperience(){
-        return iexperienceService.findExperience((long) 1);
+    @PostMapping ("/Crear")
+    public ResponseEntity<?> create(@RequestBody ExperienceDto experienceDto){
+        if(StringUtils.isBlank(experienceDto.getBusiness()))
+            return new ResponseEntity(new Mensaje("El nombre de la empresa en obligatrio"), HttpStatus.BAD_REQUEST);
+        if(impExperienceService.existByPosition(experienceDto.getPosition()))
+            return new ResponseEntity(new Mensaje("El puesto ingresado ya existe"), HttpStatus.BAD_REQUEST);
+        Experience experience = new Experience(experienceDto.getImgBusiness(), experienceDto.getBusiness(), experienceDto.getPosition(),
+                                               experienceDto.getYearIn(), experienceDto.getYearOut(), experienceDto.getDescriptionPosition());
+        impExperienceService.save(experience);
+        return new ResponseEntity(new Mensaje("Nueva Experiencia Agregada Correctamente"), HttpStatus.OK);
+        
     }
     
-    @PreAuthorize("hasRole('ADMIN')")
-    @PostMapping ("Experiencia/Crear")
-    public String crearEducation (@RequestBody Experience experience){
-        iexperienceService.saveExperience(experience);
-        return "Nueva Experiencia creada con exito!";
+    @PutMapping ("/Actualizar/{id}")
+    public ResponseEntity<?> update(@PathVariable("id")long id, @RequestBody ExperienceDto experienceDto){
+        if(!impExperienceService.existById(id))
+            return new ResponseEntity(new Mensaje("El ID no Existe"),HttpStatus.BAD_REQUEST);
+        if(impExperienceService.existByPosition(experienceDto.getPosition())
+            && 
+           impExperienceService.getByPosition(experienceDto.getPosition()).get().getId() !=id)
+                return new ResponseEntity(new Mensaje("Esa Experiencia ya existe"),HttpStatus.BAD_REQUEST);
+        if(StringUtils.isBlank(experienceDto.getPosition()))
+            return new ResponseEntity(new Mensaje("El puesto es obligatorio"), HttpStatus.BAD_REQUEST);
+        Experience experience = impExperienceService.getOne(id).get();
+        experience.setImgBusiness(experienceDto.getImgBusiness());
+        experience.setBusiness(experienceDto.getBusiness());
+        experience.setPosition(experienceDto.getImgBusiness());
+        experience.setYearIn(experienceDto.getYearIn());
+        experience.setYearOut(experienceDto.getYearOut());
+        experience.setDescriptionPosition(experienceDto.getDescriptionPosition());
+            impExperienceService.save(experience);
+            return new ResponseEntity(new Mensaje("Experiencia Actualizada Correctamente"), HttpStatus.OK);
     }
     
-    @PreAuthorize("hasRole('ADMIN')")
-    @DeleteMapping ("Experiencia/Borrar/{id}")
-    public String deleteExperience (@PathVariable long id){
-        iexperienceService.deleteExperience(id);
-        return "Experiencia id " + id + " fue Eliminada con exito!";
-    }
-    
-    @PreAuthorize("hasRole('ADMIN')")
-    @PutMapping ("Experiencia/Editar/{id}")
-    public Experience editExperience (@PathVariable long id,
-                                    @RequestParam("imgImgBusiness")        String newImgBusiness,
-                                    @RequestParam("Business")           String newBusiness,
-                                    @RequestParam("Position")            String newPosition,
-                                    @RequestParam("YearIn")       Date newYearIn,
-                                    @RequestParam("YearOut")        Date newYearOut,
-                                    @RequestParam("DescriptionPosition") String newDescriptionPosition) {
-        
-        Experience experience = iexperienceService.findExperience(id);
-        
-        experience.setImgBusiness(newImgBusiness);
-        experience.setBusiness(newBusiness);
-        experience.setPosition(newPosition);
-        experience.setYearIn(newYearIn);
-        experience.setYearOut(newYearOut);
-        experience.setDescriptionPosition(newDescriptionPosition);
-
-        
-        iexperienceService.saveExperience(experience);
-        
-        return experience;
+    @DeleteMapping ("/Eliminar/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id")long id){
+        if(!impExperienceService.existById(id))
+            return new ResponseEntity(new Mensaje("El ID no Existe"),HttpStatus.BAD_REQUEST);
+        impExperienceService.delete(id);
+            return new ResponseEntity(new Mensaje("Experiencia Eliminada"), HttpStatus.OK);
     }
     
 }

@@ -16,15 +16,15 @@ export class ExperienceService {
     return this.http.get<experience[]>(this.apiURL+ 'Listar');
   }
 
-  public setExperience(): Observable<experience> {
-    return this.http.post<experience>(this.apiURL+ 'Crear', experience);
+  public setExperience(exp: experience): Observable<any> {
+    return this.http.post<any>(this.apiURL+ 'Crear/', experience);
   }
 
-  public deleteExperience(id: number): Observable<experience> {
-    return this.http.delete<experience>(this.apiURL+ 'Borrar/' + id);
+  public deleteExperience(id: number): Observable<any> {
+    return this.http.delete<any>(this.apiURL+ 'Borrar/' + id);
   }
 
-  public putExperience(id: number): Observable<experience> {
-    return this.http.put<experience>(this.apiURL+ 'Editar/' + id, experience);
+  public putExperience(id: number, exp: experience): Observable<any> {
+    return this.http.put<any>(this.apiURL+ 'Editar/' + id, experience);
   }
 }

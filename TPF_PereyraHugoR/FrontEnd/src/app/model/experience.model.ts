@@ -6,10 +6,10 @@ export class experience {
     position: string;
     yearIn: Date;
     yearOut: Date;
-    descriptionPosition: String;
+    descriptionPosition: string;
 
     constructor (imgBusiness: string, business: string, position: string,
-                 yearIn: Date, yearOut: Date, descriptionPosition: String) {
+                 yearIn: Date, yearOut: Date, descriptionPosition: string) {
         
         this.imgBusiness = imgBusiness;
         this.business = business;

@@ -20,6 +20,10 @@ import { LoginComponent } from './components/login/login.component';
 import { Error404Component } from './components/error404/error404.component';
 import { interceptorProvider } from './service/interseptor.service';
 import { TestsComponent } from './components/tests/tests.component';
+import { ProjectNewFormComponent } from './components/project-new-form/project-new-form.component';
+import { SkillNewFormComponent } from './components/skill-new-form/skill-new-form.component';
+import { EducationNewFormComponent } from './components/education-new-form/education-new-form.component';
+import { ExperiencesNewFormComponent } from './components/experiences-new-form/experiences-new-form.component';
 
 
 @NgModule({
@@ -37,7 +41,11 @@ import { TestsComponent } from './components/tests/tests.component';
     HomeComponent,
     LoginComponent,
     Error404Component,
-    TestsComponent
+    TestsComponent,
+    ProjectNewFormComponent,
+    SkillNewFormComponent,
+    EducationNewFormComponent,
+    ExperiencesNewFormComponent
   ],
   imports: [
     BrowserModule,

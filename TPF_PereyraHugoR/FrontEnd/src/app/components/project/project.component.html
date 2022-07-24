@@ -1,5 +1,11 @@
 <div class="row">
-    <H1>Proyectos Realizados</H1>
+    <div id="title">
+        <H1>Proyectos Realizados</H1>
+        <button class="icon-btn add-btn" *ngIf="isLogged">
+            <div class="add-icon"></div>
+            <div class="btn-txt">Agregar Proyecto</div>
+        </button>
+    </div>
     <div class="btn btn-outline-primary container" *ngFor="let project of project">
         <div>
             <h4>{{project.nameProject}}</h4>
@@ -12,6 +18,10 @@
                 id="icon-github"
                 [hspace]="5">
             </a>
+        </div>
+        <div *ngIf="isLogged">
+            <button class="btn btn-success btn-circle btn-md">Edit</button>
+            <button class="btn btn-danger btn-circle btn-md">X</button>
         </div>
     </div>
 </div>
