@@ -2,40 +2,51 @@
 package com.argprog.portfoliohrp.Service;
 
 import com.argprog.portfoliohrp.Entity.Education;
-import com.argprog.portfoliohrp.Interface.IEducationService;
 import com.argprog.portfoliohrp.Repository.IEducationRes;
 import java.util.List;
+import java.util.Optional;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- *
- * @author perey r
+ * @contact pereyrahugor@gmail.com
+ * @author pereyra.hugo.r
  */
 
 @Service
-public class ImpEducationService implements IEducationService{
-    @Autowired IEducationRes ieducationRes;
+@Transactional
+public class ImpEducationService{
+    @Autowired
+    IEducationRes ieducationRes;
     
-    @Override
-    public List<Education> getEducation() {
-        List<Education> education = ieducationRes.findAll();
-        return education;
+    public List<Education> list(){
+        return ieducationRes.findAll();
     }
-
-    @Override
-    public void saveEducation(Education education) {
+    
+    public Optional<Education> getOne(long id){
+        return ieducationRes.findById(id);
+    }
+    
+    public Optional<Education> getByTitle (String title){
+        return ieducationRes.findByTitle(title);
+    }
+    
+    public void save(Education education){
         ieducationRes.save(education);
     }
-
-    @Override
-    public void deleteEducation(Long id) {
+    
+    public void delete(long id){
         ieducationRes.deleteById(id);
     }
-
-    @Override
-    public Education findEducation(Long id) {
-        Education education = ieducationRes.findById(id).orElse(null);
-        return education;
+    
+    public boolean existById(long id){
+        return ieducationRes.existsById(id);
     }
+    
+    public boolean existsByTitle(String title){
+        return ieducationRes.existsByTitle(title);
+                
+    }
+
 }

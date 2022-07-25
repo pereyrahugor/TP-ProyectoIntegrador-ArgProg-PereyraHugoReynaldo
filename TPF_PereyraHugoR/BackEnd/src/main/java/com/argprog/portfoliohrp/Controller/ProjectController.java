@@ -1,11 +1,16 @@
 
 package com.argprog.portfoliohrp.Controller;
 
+
+import com.argprog.portfoliohrp.DTO.ProjectDto;
 import com.argprog.portfoliohrp.Entity.Project;
-import com.argprog.portfoliohrp.Interface.IProjectService;
+import com.argprog.portfoliohrp.Security.Controller.Mensaje;
+import com.argprog.portfoliohrp.Service.ImpProjectService;
 import java.util.List;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,59 +18,64 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- *
- * @author perey r
+ * @contact pereyrahugor@gmail.com
+ * @author pereyra.hugo.r
  */
 
 @RestController
+@RequestMapping ("/Proyecto")
 @CrossOrigin ("http://localhost:4200")
 public class ProjectController {
-    @Autowired IProjectService iprojectService;
+    @Autowired
+    ImpProjectService impProjectService;
     
-    @GetMapping ("Proyectos/Listar")
-    public List<Project> getProject(){
-        return iprojectService.getProject();
+    @GetMapping ("/Listar")
+    public ResponseEntity <List<Project>> list(){
+        List<Project> list = impProjectService.list();
+        return new ResponseEntity (list, HttpStatus.OK);
     }
     
-        @GetMapping ("Proyectos/Buscar")
-    public Project findProject(long id){
-        return iprojectService.findProject(id);
-    }
-    
-    @PreAuthorize("hasRole('ADMIN')")
-    @PostMapping ("Proyectos/Crear")
-    public String crearProject (@RequestBody Project project){
-        iprojectService.saveProject(project);
-        return "Nuevo Proyecto creada con exito!";
-    }
-    
-    @PreAuthorize("hasRole('ADMIN')")
-    @DeleteMapping ("Proyectos/Borrar/{id}")
-    public String deleteProject (@PathVariable Long id){
-        iprojectService.deleteProject(id);
-        return "Proyecto id " + id + " fue Eliminada con exito!";
-    }
-    
-    @PreAuthorize("hasRole('ADMIN')")
-    @PutMapping ("Proyectos/Editar/{id}")
-    public Project editProject (@PathVariable long id,
-                                @RequestParam("ImgProject")         String newImgProject,
-                                @RequestParam("NameProject")        String newNameProject,
-                                @RequestParam("DescriptionProject") String newDescriptionProject,
-                                @RequestParam("LinkProject")        String newLinkProject) {
+    @PostMapping ("/Crear")
+    public ResponseEntity<?> create(@RequestBody ProjectDto projectDto){
+        if(StringUtils.isBlank(projectDto.getNameProject()))
+            return new ResponseEntity(new Mensaje("El nombre del proyecto es obligatorio"), HttpStatus.BAD_REQUEST);
+        if(impProjectService.existsByNameProject(projectDto.getNameProject()))
+            return new ResponseEntity(new Mensaje("El proyecto ingresado ya existe"), HttpStatus.BAD_REQUEST);
+        Project project = new Project(projectDto.getNameProject(), projectDto.getImgProject(),
+                                      projectDto.getDescriptionProject(), projectDto.getLinkProject());
+        impProjectService.save(project);
+        return new ResponseEntity(new Mensaje("Nueva Proyecto Agregado Correctamente"), HttpStatus.OK);
         
-        Project project = iprojectService.findProject(id);
-        
-        project.setImgProject(newImgProject);
-        project.setNameProject(newNameProject);
-        project.setDescriptionProject(newDescriptionProject);
-        project.setLinkProject(newLinkProject);
-        
-      
-        return project;
+    }
+    
+    @PutMapping ("/Actualizar/{id}")
+    public ResponseEntity<?> update(@PathVariable("id")long id, @RequestBody ProjectDto projectDto){
+        if(!impProjectService.existById(id))
+            return new ResponseEntity(new Mensaje("El ID no Existe"),HttpStatus.BAD_REQUEST);
+        if(impProjectService.existsByNameProject(projectDto.getNameProject())
+            && 
+           impProjectService.getByNameProject(projectDto.getNameProject()).get().getId() !=id)
+                return new ResponseEntity(new Mensaje("Ese Proyecto ya existe"),HttpStatus.BAD_REQUEST);
+        if(StringUtils.isBlank(projectDto.getNameProject()))
+            return new ResponseEntity(new Mensaje("El Nombre del Proyecto es obligatorio"), HttpStatus.BAD_REQUEST);
+        Project project = impProjectService.getOne(id).get();
+        project.setNameProject(projectDto.getNameProject());
+        project.setDescriptionProject(projectDto.getDescriptionProject());
+        project.setImgProject(projectDto.getImgProject());
+        project.setLinkProject(projectDto.getLinkProject());
+            impProjectService.save(project);
+            return new ResponseEntity(new Mensaje("Proyecto Actualizado Correctamente"), HttpStatus.OK);
+    }
+    
+    @DeleteMapping ("/Eliminar/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id")long id){
+        if(!impProjectService.existById(id))
+            return new ResponseEntity(new Mensaje("El ID no Existe"),HttpStatus.BAD_REQUEST);
+        impProjectService.delete(id);
+            return new ResponseEntity(new Mensaje("Proyecto Eliminado"), HttpStatus.OK);
     }
 }

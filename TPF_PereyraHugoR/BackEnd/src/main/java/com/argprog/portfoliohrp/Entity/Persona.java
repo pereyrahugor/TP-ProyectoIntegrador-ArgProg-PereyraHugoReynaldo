@@ -4,12 +4,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
 /**
- *
+ * @contact pereyrahugor@gmail.com
  * @author pereyra.hugo.r
  */
 
@@ -19,34 +18,27 @@ public class Persona{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
-    
-    @NotNull
-    @Size(min = 1, max = 50, message="no cumple con la longitud")
     private String name;
-    
-    @Size(min = 1, max = 50, message="no cumple con la longitud")
     private String text;
-    
-    @NotNull
-    @Size(min = 1, max = 50, message="no cumple con la longitud")
     private String lastName;
-    
-    @NotNull
     private String description;
-    
     private String imgPerfil;
-    
     private String imgBanner;
-    
-    @NotNull
-    @Size(min = 1, max = 50, message="no cumple con la longitud")
     private String country;
-        
-    @NotNull
-    @Size(min = 1, max = 50, message="no cumple con la longitud")
     private String estate;
-            
-    @NotNull
-    @Size(min = 1, max = 50, message="no cumple con la longitud")
     private String contact;
+
+    public Persona(String name, String text, String lastName, String description,
+                   String imgPerfil, String imgBanner, String country, String estate, String contact) {
+        this.name = name;
+        this.text = text;
+        this.lastName = lastName;
+        this.description = description;
+        this.imgPerfil = imgPerfil;
+        this.imgBanner = imgBanner;
+        this.country = country;
+        this.estate = estate;
+        this.contact = contact;
+    }
+      
 }

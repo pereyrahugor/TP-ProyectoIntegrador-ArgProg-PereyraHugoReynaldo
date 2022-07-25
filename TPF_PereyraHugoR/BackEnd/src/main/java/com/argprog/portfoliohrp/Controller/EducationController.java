@@ -1,12 +1,15 @@
 
 package com.argprog.portfoliohrp.Controller;
 
+import com.argprog.portfoliohrp.DTO.EducationDto;
 import com.argprog.portfoliohrp.Entity.Education;
-import com.argprog.portfoliohrp.Interface.IEducationService;
-import java.util.Date;
+import com.argprog.portfoliohrp.Security.Controller.Mensaje;
+import com.argprog.portfoliohrp.Service.ImpEducationService;
 import java.util.List;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,63 +17,66 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- *
- * @author perey r
+ * @contact pereyrahugor@gmail.com
+ * @author pereyra.hugo.r
  */
 
 @RestController
+@RequestMapping ("/Educacion")
 @CrossOrigin (origins = "http://localhost:4200")
 public class EducationController {
-    @Autowired IEducationService ieducationService;
+    @Autowired
+    ImpEducationService impEducationService;
     
-    @GetMapping ("Educacion/Listar")
-    public List<Education> getEducation(){
-        return ieducationService.getEducation();
+    @GetMapping ("/Listar")
+    public ResponseEntity <List<Education>> list(){
+        List<Education> list = impEducationService.list();
+        return new ResponseEntity (list, HttpStatus.OK);
     }
     
-    @GetMapping ("Educacion/Buscar")
-    public Education findEducation(){
-        return ieducationService.findEducation((long) 1);
+    @PostMapping ("/Crear")
+    public ResponseEntity<?> create(@RequestBody EducationDto educationDto){
+        if(StringUtils.isBlank(educationDto.getTitle()))
+            return new ResponseEntity(new Mensaje("El Estudio es obligatorio"), HttpStatus.BAD_REQUEST);
+        if(impEducationService.existsByTitle(educationDto.getTitle()))
+            return new ResponseEntity(new Mensaje("El Titulo ingresado ya existe"), HttpStatus.BAD_REQUEST);
+        Education education = new Education(educationDto.getImgInstitute(), educationDto.getTitle(), educationDto.getYearStudied(),
+                                            educationDto.getDuration(), educationDto.getDescriptionEducation());
+        impEducationService.save(education);
+        return new ResponseEntity(new Mensaje("Nueva Educación Agregada Correctamente"), HttpStatus.OK);
+        
     }
     
-    @PreAuthorize("hasRole('ADMIN')")
-    @PostMapping ("Educacion/Crear")
-    public String crearEducation (@RequestBody Education education){
-        ieducationService.saveEducation(education);
-        return "Nueva Educación creada con exito!";
+    @PutMapping ("/Actualizar/{id}")
+    public ResponseEntity<?> update(@PathVariable("id")long id, @RequestBody EducationDto educationDto){
+        if(!impEducationService.existById(id))
+            return new ResponseEntity(new Mensaje("El ID no Existe"),HttpStatus.BAD_REQUEST);
+        if(impEducationService.existsByTitle(educationDto.getTitle())
+            && 
+           impEducationService.getByTitle(educationDto.getTitle()).get().getId() !=id)
+                return new ResponseEntity(new Mensaje("Esa Educación ya existe"),HttpStatus.BAD_REQUEST);
+        if(StringUtils.isBlank(educationDto.getTitle()))
+            return new ResponseEntity(new Mensaje("El puesto es obligatorio"), HttpStatus.BAD_REQUEST);
+        Education education = impEducationService.getOne(id).get();
+        education.setImgInstitute(educationDto.getImgInstitute());
+        education.setTitle(educationDto.getTitle());
+        education.setYearStudied(educationDto.getYearStudied());
+        education.setDuration(educationDto.getDuration());
+        education.setDescriptionEducation(educationDto.getDescriptionEducation());
+            impEducationService.save(education);
+            return new ResponseEntity(new Mensaje("Educación Actualizada Correctamente"), HttpStatus.OK);
     }
     
-    @PreAuthorize("hasRole('ADMIN')")
-    @DeleteMapping ("Educacion/Borrar/{id}")
-    public String deleteEducation (@PathVariable Long id){
-        ieducationService.deleteEducation(id);
-        return "Educación id " + id + " fue Eliminada con exito!";
-    }
-    
-    @PutMapping ("Educacion/Editar/{id}")
-    public Education editEducation (@PathVariable Long id,
-                                    @RequestParam("ImgInstitute")            String newImgInstitute,
-                                    @RequestParam("Title")                   String newTitle,
-                                    @RequestParam("YearStudied")             String newYearStudied,
-                                    @RequestParam("Duration")                String newDuration,
-                                    @RequestParam("DescriptionEducation")    String newDescriptionEducation) {
-        
-        Education education = ieducationService.findEducation(id);
-        
-        education.setImgInstitute(newImgInstitute);
-        education.setTitle(newTitle);
-        education.setYearStudied(newYearStudied);
-        education.setDuration(newDuration);
-        education.setDescriptionEducation(newDescriptionEducation);
-
-        
-        ieducationService.saveEducation(education);
-        
-        return education;
+    @DeleteMapping ("/Eliminar/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id")long id){
+        if(!impEducationService.existById(id))
+            return new ResponseEntity(new Mensaje("El ID no Existe"),HttpStatus.BAD_REQUEST);
+        impEducationService.delete(id);
+            return new ResponseEntity(new Mensaje("Educación Eliminada"), HttpStatus.OK);
     }
     
 }

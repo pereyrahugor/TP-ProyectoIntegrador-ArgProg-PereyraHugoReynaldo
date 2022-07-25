@@ -21,8 +21,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- *
- * @author perey r
+ * @contact pereyrahugor@gmail.com
+ * @author pereyra.hugo.r
  */
 
 @RestController
@@ -42,8 +42,8 @@ public class ExperienceController {
     @PostMapping ("/Crear")
     public ResponseEntity<?> create(@RequestBody ExperienceDto experienceDto){
         if(StringUtils.isBlank(experienceDto.getBusiness()))
-            return new ResponseEntity(new Mensaje("El nombre de la empresa en obligatrio"), HttpStatus.BAD_REQUEST);
-        if(impExperienceService.existByPosition(experienceDto.getPosition()))
+            return new ResponseEntity(new Mensaje("El nombre de la empresa es obligatorio"), HttpStatus.BAD_REQUEST);
+        if(impExperienceService.existsByPosition(experienceDto.getPosition()))
             return new ResponseEntity(new Mensaje("El puesto ingresado ya existe"), HttpStatus.BAD_REQUEST);
         Experience experience = new Experience(experienceDto.getImgBusiness(), experienceDto.getBusiness(), experienceDto.getPosition(),
                                                experienceDto.getYearIn(), experienceDto.getYearOut(), experienceDto.getDescriptionPosition());
@@ -56,7 +56,7 @@ public class ExperienceController {
     public ResponseEntity<?> update(@PathVariable("id")long id, @RequestBody ExperienceDto experienceDto){
         if(!impExperienceService.existById(id))
             return new ResponseEntity(new Mensaje("El ID no Existe"),HttpStatus.BAD_REQUEST);
-        if(impExperienceService.existByPosition(experienceDto.getPosition())
+        if(impExperienceService.existsByPosition(experienceDto.getPosition())
             && 
            impExperienceService.getByPosition(experienceDto.getPosition()).get().getId() !=id)
                 return new ResponseEntity(new Mensaje("Esa Experiencia ya existe"),HttpStatus.BAD_REQUEST);

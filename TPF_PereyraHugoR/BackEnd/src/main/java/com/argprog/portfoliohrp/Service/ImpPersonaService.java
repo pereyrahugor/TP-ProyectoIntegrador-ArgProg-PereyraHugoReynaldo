@@ -2,41 +2,50 @@
 package com.argprog.portfoliohrp.Service;
 
 import com.argprog.portfoliohrp.Entity.Persona;
-import com.argprog.portfoliohrp.Interface.IPersonaService;
 import com.argprog.portfoliohrp.Repository.IPersonaRes;
 import java.util.List;
+import java.util.Optional;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- *
- * @author perey r
+ * @contact pereyrahugor@gmail.com
+ * @author pereyra.hugo.r
  */
 
 @Service
-public class ImpPersonaService implements IPersonaService{
-    @Autowired IPersonaRes ipersonaRes;
+@Transactional
+public class ImpPersonaService{
+    @Autowired
+    IPersonaRes ipersonaRes;
     
-    @Override
-    public List<Persona> getPersona() {
-        List<Persona> persona = ipersonaRes.findAll();
-        return persona;
+    public List<Persona> list(){
+        return ipersonaRes.findAll();
     }
-
-    @Override
-    public void savePersona(Persona persona) {
+    
+    public Optional<Persona> getOne(long id){
+        return ipersonaRes.findById(id);
+    }
+    
+    public Optional<Persona> getByContact (String contact){
+        return ipersonaRes.findByContact(contact);
+    }
+    
+    public void save(Persona persona){
         ipersonaRes.save(persona);
     }
-
-    @Override
-    public void deletePersona(long id) {
+    
+    public void delete(long id){
         ipersonaRes.deleteById(id);
     }
-
-    @Override
-    public Persona findPersona(long id) {
-        Persona persona = ipersonaRes.findById(id).orElse(null);
-        return persona;
+    
+    public boolean existById(long id){
+        return ipersonaRes.existsById(id);
     }
     
+    public boolean existsByContact(String contact){
+        return ipersonaRes.existsByContact(contact);
+                
+    }
 }

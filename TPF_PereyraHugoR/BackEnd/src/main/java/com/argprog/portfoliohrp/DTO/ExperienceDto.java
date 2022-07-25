@@ -7,8 +7,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- *
- * @author perey r
+ * @contact pereyrahugor@gmail.com
+ * @author pereyra.hugo.r
  */
 @Getter @Setter
 public class ExperienceDto {
@@ -19,12 +19,12 @@ public class ExperienceDto {
     private String position;
     @NotBlank
     private Date yearIn;
-    @NotBlank
     private Date yearOut;
     @NotBlank
     private String descriptionPosition;
 
-    public ExperienceDto(String imgBusiness, String business, String position, Date yearIn, Date yearOut, String descriptionPosition) {
+    public ExperienceDto(String imgBusiness, String business, String position,
+                         Date yearIn, Date yearOut, String descriptionPosition) {
         this.imgBusiness = imgBusiness;
         this.business = business;
         this.position = position;

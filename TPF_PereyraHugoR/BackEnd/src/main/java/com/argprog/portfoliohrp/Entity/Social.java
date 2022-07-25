@@ -1,5 +1,4 @@
 package com.argprog.portfoliohrp.Entity;
-import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,7 +9,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- *
+ * @contact pereyrahugor@gmail.com
  * @author pereyra.hugo.r
  */
 
@@ -20,18 +19,15 @@ public class Social{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    
-    @NotNull
     private Long idPersona;
-    
     private String imgSocial;
-    
-    @NotNull
-    @Size(min = 1, max = 50, message="no cumple con la longitud")
     private String nameSocial;
-    
-    @NotNull
-    @Size(min = 1, max = 50, message="no cumple con la longitud")
     private String linkSocial;
+
+    public Social(String imgSocial, String nameSocial, String linkSocial) {
+        this.imgSocial = imgSocial;
+        this.nameSocial = nameSocial;
+        this.linkSocial = linkSocial;
+    }
         
 }

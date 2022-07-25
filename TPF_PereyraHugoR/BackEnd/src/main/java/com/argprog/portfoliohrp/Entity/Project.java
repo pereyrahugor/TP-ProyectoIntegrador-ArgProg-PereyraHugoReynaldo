@@ -4,12 +4,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
 /**
- *
+ * @contact pereyrahugor@gmail.com
  * @author pereyra.hugo.r
  */
 
@@ -19,21 +18,17 @@ public class Project{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
-    
-    @NotNull
     private long idPersona;
-    
     private String imgProject;
-    
-    @NotNull
-    @Size(min = 1, max = 50, message="no cumple con la longitud")
     private String nameProject;
-    
-    @NotNull
     private String descriptionProject;
-    
-    @NotNull
-    @Size(min = 1, max = 50, message="no cumple con la longitud")
     private String linkProject;
-        
+
+    public Project(String imgProject, String nameProject, String descriptionProject, String linkProject) {
+        this.imgProject = imgProject;
+        this.nameProject = nameProject;
+        this.descriptionProject = descriptionProject;
+        this.linkProject = linkProject;
+    }
+         
 }

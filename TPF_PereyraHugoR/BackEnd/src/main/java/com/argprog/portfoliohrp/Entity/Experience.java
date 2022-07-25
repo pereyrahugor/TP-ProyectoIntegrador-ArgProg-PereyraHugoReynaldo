@@ -5,12 +5,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
 /**
- *
+ * @contact pereyrahugor@gmail.com
  * @author pereyra.hugo.r
  */
 
@@ -20,31 +19,16 @@ public class Experience{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
-    
     private long idPersona;
-    
     private String imgBusiness;
-    
-    @NotNull
-    @Size(min = 1, max = 50, message="no cumple con la longitud")
     private String business;
-    
-    @NotNull
-    @Size(min = 1, max = 50, message="no cumple con la longitud")
     private String position;
-    
-    @NotNull
-    @Size(min = 1, max = 10, message="el formato decha es dd/mm/yyyy")
     private Date yearIn;
-    
-    @Size(min = 1, max = 10, message="el formato decha es dd/mm/yyyy")
     private Date yearOut;
-    
-    @NotNull
-    @Size(min = 1, max = 50, message="no cumple con la longitud")
     private String descriptionPosition;
 
-    public Experience(String imgBusiness, String business, String position, Date yearIn, Date yearOut, String descriptionPosition) {
+    public Experience(String imgBusiness, String business, String position,
+                      Date yearIn, Date yearOut, String descriptionPosition) {
         this.imgBusiness = imgBusiness;
         this.business = business;
         this.position = position;
@@ -52,7 +36,5 @@ public class Experience{
         this.yearOut = yearOut;
         this.descriptionPosition = descriptionPosition;
     }
-    
-    
-    
+      
 }

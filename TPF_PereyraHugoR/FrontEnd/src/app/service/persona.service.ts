@@ -8,12 +8,12 @@ import { persona } from '../model/persona.model';
 })
 export class PersonaService {
 
-  apiURL = 'http://localhost:8080/Personas/'
+  apiURL = 'http://localhost:8080/Persona/'
 
   constructor (private http: HttpClient) { }
 
   public getPersona(): Observable<persona> {
-    return this.http.get<persona>(this.apiURL+ 'Buscar');
+    return this.http.get<persona>(this.apiURL+ 'Listar');
   }
 
   public setPersonas(): Observable<persona> {

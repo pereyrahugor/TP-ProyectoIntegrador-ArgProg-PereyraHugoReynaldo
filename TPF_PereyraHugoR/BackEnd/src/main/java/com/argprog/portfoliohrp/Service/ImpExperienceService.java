@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- *
- * @author perey r
+ * @contact pereyrahugor@gmail.com
+ * @author pereyra.hugo.r
  */
 
 @Service
@@ -44,8 +44,8 @@ public class ImpExperienceService{
         return iexperienceRes.existsById(id);
     }
     
-    public boolean existByPosition(String position){
-        return iexperienceRes.existByPosition(position);
+    public boolean existsByPosition(String position){
+        return iexperienceRes.existsByPosition(position);
                 
     }
     

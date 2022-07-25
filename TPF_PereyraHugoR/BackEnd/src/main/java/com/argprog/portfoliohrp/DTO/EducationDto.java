@@ -1,8 +1,7 @@
-package com.argprog.portfoliohrp.Entity;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+package com.argprog.portfoliohrp.DTO;
+
+import javax.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,21 +9,19 @@ import lombok.Setter;
  * @contact pereyrahugor@gmail.com
  * @author pereyra.hugo.r
  */
-
-@Entity
-@Setter @Getter
-public class Education{
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long id;
-    private Long idPersona;
+@Getter @Setter
+public class EducationDto {
     private String imgInstitute;
+    @NotBlank
     private String title;
+    @NotBlank
     private String yearStudied;
+    @NotBlank
     private String duration;
+    @NotBlank
     private String descriptionEducation;
 
-    public Education(String imgInstitute, String title,
+    public EducationDto(String imgInstitute, String title,
                      String yearStudied, String duration, String descriptionEducation) {
         this.imgInstitute = imgInstitute;
         this.title = title;
@@ -32,5 +29,4 @@ public class Education{
         this.duration = duration;
         this.descriptionEducation = descriptionEducation;
     }
-         
 }

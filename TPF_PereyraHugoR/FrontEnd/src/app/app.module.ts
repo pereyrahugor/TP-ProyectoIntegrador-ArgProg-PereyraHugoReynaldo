@@ -25,7 +25,6 @@ import { SkillNewFormComponent } from './components/skill-new-form/skill-new-for
 import { EducationNewFormComponent } from './components/education-new-form/education-new-form.component';
 import { ExperiencesNewFormComponent } from './components/experiences-new-form/experiences-new-form.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
