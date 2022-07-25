@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Error404Component } from './components/error404/error404.component';
+import { ExperienceEditFormComponent } from './components/experience-edit-form/experience-edit-form.component';
 import { ExperiencesNewFormComponent } from './components/experiences-new-form/experiences-new-form.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
@@ -11,6 +12,7 @@ const routes: Routes = [
    {path:'login', component: LoginComponent},
    {path:'tests', component: TestsComponent},
    {path:'newExperience', component: ExperiencesNewFormComponent},
+   {path:'editExperience/:id', component: ExperienceEditFormComponent},
    {path: '**', component: Error404Component}
  
 

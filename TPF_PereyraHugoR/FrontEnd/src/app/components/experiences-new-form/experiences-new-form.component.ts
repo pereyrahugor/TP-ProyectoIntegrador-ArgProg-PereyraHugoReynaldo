@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { experience } from 'src/app/model/experience.model';
 import { ExperienceService } from 'src/app/service/experience.service';
 
@@ -9,7 +9,7 @@ import { ExperienceService } from 'src/app/service/experience.service';
   styleUrls: ['./experiences-new-form.component.css']
 })
 export class ExperiencesNewFormComponent implements OnInit {
-    
+
     imgBusiness!: string;
     business!: string;
     position!: string;
@@ -19,8 +19,7 @@ export class ExperiencesNewFormComponent implements OnInit {
 
   constructor(private experienceService: ExperienceService, private router: Router) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onNewExperience(): void {
     const exp = new experience(this.imgBusiness, this.business, this.position, 

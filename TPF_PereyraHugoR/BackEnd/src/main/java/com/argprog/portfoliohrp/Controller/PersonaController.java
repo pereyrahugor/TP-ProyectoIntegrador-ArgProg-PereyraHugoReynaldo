@@ -5,7 +5,6 @@ import com.argprog.portfoliohrp.DTO.PersonaDto;
 import com.argprog.portfoliohrp.Entity.Persona;
 import com.argprog.portfoliohrp.Security.Controller.Mensaje;
 import com.argprog.portfoliohrp.Service.ImpPersonaService;
-import java.util.List;
 import java.util.Optional;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +34,7 @@ public class PersonaController {
     @GetMapping ("/Listar")
     public ResponseEntity<Optional<Persona>> getPersona(){
         return new ResponseEntity(impPersonaService.getOne(1),HttpStatus.OK);
-        }
+    }
     
     @PostMapping ("/Crear")
     public ResponseEntity<?> create(@RequestBody PersonaDto personaDto){

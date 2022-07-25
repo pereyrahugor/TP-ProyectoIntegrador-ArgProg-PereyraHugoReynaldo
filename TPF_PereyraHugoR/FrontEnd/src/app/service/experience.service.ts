@@ -17,7 +17,7 @@ export class ExperienceService {
   }
 
   public detailExperience(id: number): Observable<experience> {
-    return this.http.get<experience>(this.apiURL+ `detailExperience/${id}`);
+    return this.http.get<experience>(this.apiURL+ `detail/${id}`);
   }
 
   public saveExperience(exp: experience): Observable<any> {

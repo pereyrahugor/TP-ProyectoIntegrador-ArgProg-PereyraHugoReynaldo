@@ -1,5 +1,4 @@
-
-<section class="background-radial-gradient overflow-hidden" id="section">
+<section class="background-radial-gradient overflow-hidden" id="section" *ngIf="exp">
     <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
       <div class="row gx-lg-5 align-items-center mb-5">
         <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
@@ -31,7 +30,7 @@
           ></div>
           <div class="card bg-glass">
             <div class="card-body px-4 py-5 px-md-5">
-              <form #f="ngForm" (ngSubmit)="onNewExperience()" novalidate>
+              <form #f="ngForm" (ngSubmit)="onUpdateExperience()" novalidate>
                 <!-- Exp img -->
                 <div class="form-outline mb-4">
                   <input 
@@ -39,7 +38,7 @@
                     id = "imgBusiness"
                     name = "imgBusiness"
                     class="form-control"
-                    [(ngModel)] = "imgBusiness"
+                    [(ngModel)] = "exp.imgBusiness"
                     required
                   />
                   <label class="form-label" for="imgBusiness">Imagen Empresa</label>
@@ -51,7 +50,7 @@
                     id = "business"
                     name = "business"
                     class="form-control"
-                    [(ngModel)] = "business"
+                    [(ngModel)] = "exp.business"
                     required
                   />
                   <label class="form-label" for="business">Empresa</label>
@@ -63,7 +62,7 @@
                       id = "position"
                       name = "position"
                       class="form-control"
-                      [(ngModel)] = "position"
+                      [(ngModel)] = "exp.position"
                       required
                     />
                     <label class="form-label" for="position">Puesto</label>
@@ -75,7 +74,7 @@
                       id = "yearIn"
                       name = "yearIn"
                       class="form-control"
-                      [(ngModel)] = "yearIn"
+                      [(ngModel)] = "exp.yearIn"
                       required
                     />
                     <label class="form-label" for="yearIn">Año de Ingreso</label>
@@ -87,7 +86,7 @@
                       id = "yearOut"
                       name = "yearOut"
                       class="form-control"
-                      [(ngModel)] = "yearOut"
+                      [(ngModel)] = "exp.yearOut"
                       required
                     />
                     <label class="form-label" for="yearOut">Año de Salida</label>
@@ -99,7 +98,7 @@
                           id = "descriptionPosition"
                           name = "descriptionPosition"
                           class="form-control"
-                          [(ngModel)] = "descriptionPosition"
+                          [(ngModel)] = "exp.descriptionPosition"
                           required
                         />
                         <label class="form-label" for="descriptionPosition">Descripción del Puesto</label>
@@ -110,7 +109,7 @@
                     type="submit"
                     class="btn btn-primary btn-block mb-4"
                     id="loginButton"
-                    >Agregar</button>
+                    >Actualizar</button>
                   <button (click)="volver()"
                     class="btn btn-primary btn-block mb-4"
                     id="volverButton"
@@ -123,4 +122,3 @@
       </div>
     </div>
   </section>
- 

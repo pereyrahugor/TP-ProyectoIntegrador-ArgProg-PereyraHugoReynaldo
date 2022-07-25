@@ -3,9 +3,11 @@ package com.argprog.portfoliohrp.Controller;
 
 import com.argprog.portfoliohrp.DTO.ExperienceDto;
 import com.argprog.portfoliohrp.Entity.Experience;
+import com.argprog.portfoliohrp.Entity.Persona;
 import com.argprog.portfoliohrp.Security.Controller.Mensaje;
 import com.argprog.portfoliohrp.Service.ImpExperienceService;
 import java.util.List;
+import java.util.Optional;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,6 +39,18 @@ public class ExperienceController {
         List<Experience> list = impExperienceService.list();
         return new ResponseEntity (list, HttpStatus.OK);
     }
+    
+    /*@GetMapping ("/detail/{id}")
+    public ResponseEntity<Experience> findExperience(@PathVariable("id")long id, @RequestBody ExperienceDto experienceDto){
+        Experience experience = impExperienceService.getOne(id).get();
+        experience.setImgBusiness(experienceDto.getImgBusiness());
+        experience.setBusiness(experienceDto.getBusiness());
+        experience.setPosition(experienceDto.getImgBusiness());
+        experience.setYearIn(experienceDto.getYearIn());
+        experience.setYearOut(experienceDto.getYearOut());
+        experience.setDescriptionPosition(experienceDto.getDescriptionPosition());
+        return new ResponseEntity(experienceDto,HttpStatus.OK);
+    }*/
     
     @PostMapping ("/save")
     public ResponseEntity<?> create(@RequestBody ExperienceDto experienceDto){
