@@ -17,7 +17,7 @@ export class ExperienceService {
   }
 
   public setExperience(exp: experience): Observable<any> {
-    return this.http.post<any>(this.apiURL+ 'Crear/', experience);
+    return this.http.post<any>(this.apiURL+ 'Crear/', exp);
   }
 
   public deleteExperience(id: number): Observable<any> {
@@ -25,6 +25,6 @@ export class ExperienceService {
   }
 
   public putExperience(id: number, exp: experience): Observable<any> {
-    return this.http.put<any>(this.apiURL+ 'Editar/' + id, experience);
+    return this.http.put<any>(this.apiURL+ 'Editar/' + id, exp);
   }
 }
