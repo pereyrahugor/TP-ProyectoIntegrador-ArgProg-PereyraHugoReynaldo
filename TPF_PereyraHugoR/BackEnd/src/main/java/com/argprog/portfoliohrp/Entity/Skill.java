@@ -26,6 +26,9 @@ public class Skill{
     private String nameSkill;
     private int progress;
 
+    public Skill() {
+    }
+
     public Skill(String imgSkill, String colorIn, String colorOut, String nameSkill, int progress) {
         this.imgSkill = imgSkill;
         this.colorIn = colorIn;

@@ -29,12 +29,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping ("/Experiencia")
 @CrossOrigin (origins = "http://localhost:4200")
 public class ExperienceController {
-    @Autowired 
+    @Autowired
     ImpExperienceService impExperienceService;
     
-    
     @GetMapping ("/Listar")
-    public ResponseEntity <List<Experience>> list(){
+    public  ResponseEntity <List<Experience>> list(){
         List<Experience> list = impExperienceService.list();
         return new ResponseEntity (list, HttpStatus.OK);
     }
@@ -49,7 +48,6 @@ public class ExperienceController {
                                                experienceDto.getYearIn(), experienceDto.getYearOut(), experienceDto.getDescriptionPosition());
         impExperienceService.save(experience);
         return new ResponseEntity(new Mensaje("Nueva Experiencia Agregada Correctamente"), HttpStatus.OK);
-        
     }
     
     @PutMapping ("/Actualizar/{id}")

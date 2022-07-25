@@ -24,6 +24,9 @@ public class Project{
     private String descriptionProject;
     private String linkProject;
 
+    public Project() {
+    }
+
     public Project(String imgProject, String nameProject, String descriptionProject, String linkProject) {
         this.imgProject = imgProject;
         this.nameProject = nameProject;

@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,6 +25,9 @@ public class Experience{
     private Date yearIn;
     private Date yearOut;
     private String descriptionPosition;
+
+    public Experience() {
+    }
 
     public Experience(String imgBusiness, String business, String position,
                       Date yearIn, Date yearOut, String descriptionPosition) {

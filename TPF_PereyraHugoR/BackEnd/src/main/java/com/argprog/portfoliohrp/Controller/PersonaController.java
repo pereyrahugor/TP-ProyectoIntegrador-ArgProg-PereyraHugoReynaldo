@@ -6,6 +6,7 @@ import com.argprog.portfoliohrp.Entity.Persona;
 import com.argprog.portfoliohrp.Security.Controller.Mensaje;
 import com.argprog.portfoliohrp.Service.ImpPersonaService;
 import java.util.List;
+import java.util.Optional;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,16 +27,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping ("/Persona")
-@CrossOrigin (origins = "http://localhost:4200/")
+@CrossOrigin (origins = "http://localhost:4200")
 public class PersonaController {
     @Autowired
-    ImpPersonaService ImpPersonaService;
+    ImpPersonaService impPersonaService;
     
     @GetMapping ("/Listar")
-    public ResponseEntity<?> list(){
-        Persona persona = ImpPersonaService.getOne(1);
-        return new ResponseEntity (persona, HttpStatus.OK);
-    }
+    public ResponseEntity<Optional<Persona>> getPersona(){
+        return new ResponseEntity(impPersonaService.getOne(1),HttpStatus.OK);
+        }
     
     @PostMapping ("/Crear")
     public ResponseEntity<?> create(@RequestBody PersonaDto personaDto){
@@ -43,25 +43,24 @@ public class PersonaController {
             return new ResponseEntity(new Mensaje("El Nombre es obligatorio"), HttpStatus.BAD_REQUEST);
         if(StringUtils.isBlank(personaDto.getLastName()))
             return new ResponseEntity(new Mensaje("El Apellido es obligatorio"), HttpStatus.BAD_REQUEST);
-        if(ImpPersonaService.existsByContact(personaDto.getContact()))
+        if(impPersonaService.existsByContact(personaDto.getContact()))
             return new ResponseEntity(new Mensaje("El Correo ingresado ya existe"), HttpStatus.BAD_REQUEST);
         Persona persona = new Persona(personaDto.getName(), personaDto.getText(), personaDto.getLastName(),
                                       personaDto.getDescription(), personaDto.getImgPerfil(), personaDto.getImgBanner(),
                                       personaDto.getCountry(), personaDto.getEstate(), personaDto.getContact());
-        ImpPersonaService.save(persona);
+        impPersonaService.save(persona);
         return new ResponseEntity(new Mensaje("Nueva Persona Agregada Correctamente"), HttpStatus.OK);
-        
     }
     
     @PutMapping ("/Actualizar/{id}")
     public ResponseEntity<?> update(@PathVariable("id")long id, @RequestBody PersonaDto personaDto){
-        if(!ImpPersonaService.existById(id))
+        if(!impPersonaService.existById(id))
             return new ResponseEntity(new Mensaje("El ID no Existe"),HttpStatus.BAD_REQUEST);
         if(StringUtils.isBlank(personaDto.getName()))
             return new ResponseEntity(new Mensaje("El Nombre es obligatorio"), HttpStatus.BAD_REQUEST);
         if(StringUtils.isBlank(personaDto.getLastName()))
             return new ResponseEntity(new Mensaje("El Apellido es obligatorio"), HttpStatus.BAD_REQUEST);
-        Persona persona = ImpPersonaService.getOne(id).get();
+        Persona persona = impPersonaService.getOne(id).get();
         persona.setName(personaDto.getName());
         persona.setText(personaDto.getText());
         persona.setLastName(personaDto.getLastName());
@@ -71,7 +70,7 @@ public class PersonaController {
         persona.setCountry(personaDto.getCountry());
         persona.setEstate(personaDto.getEstate());
         persona.setContact(personaDto.getContact());
-            ImpPersonaService.save(persona);
+            impPersonaService.save(persona);
             return new ResponseEntity(new Mensaje("Datos Personales Actualizados Correctamente"), HttpStatus.OK);
     }
     

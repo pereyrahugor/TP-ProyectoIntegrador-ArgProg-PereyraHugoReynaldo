@@ -24,6 +24,9 @@ public class Social{
     private String nameSocial;
     private String linkSocial;
 
+    public Social() {
+    }
+
     public Social(String imgSocial, String nameSocial, String linkSocial) {
         this.imgSocial = imgSocial;
         this.nameSocial = nameSocial;

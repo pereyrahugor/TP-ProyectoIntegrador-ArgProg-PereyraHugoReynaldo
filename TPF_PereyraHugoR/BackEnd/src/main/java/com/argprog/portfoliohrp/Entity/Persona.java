@@ -28,6 +28,9 @@ public class Persona{
     private String estate;
     private String contact;
 
+    public Persona() {
+    }
+
     public Persona(String name, String text, String lastName, String description,
                    String imgPerfil, String imgBanner, String country, String estate, String contact) {
         this.name = name;

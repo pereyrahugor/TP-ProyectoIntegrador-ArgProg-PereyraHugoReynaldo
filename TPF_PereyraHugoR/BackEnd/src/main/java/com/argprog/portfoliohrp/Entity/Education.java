@@ -24,6 +24,9 @@ public class Education{
     private String duration;
     private String descriptionEducation;
 
+    public Education() {
+    }
+
     public Education(String imgInstitute, String title,
                      String yearStudied, String duration, String descriptionEducation) {
         this.imgInstitute = imgInstitute;
