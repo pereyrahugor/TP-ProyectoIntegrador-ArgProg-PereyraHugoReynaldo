@@ -12,19 +12,23 @@ export class ExperienceService {
 
   constructor (private http: HttpClient) { }
 
-  public getExperience(): Observable<experience[]> {
-    return this.http.get<experience[]>(this.apiURL+ 'Listar');
+  public listExperience(): Observable<experience[]> {
+    return this.http.get<experience[]>(this.apiURL+ 'list');
   }
 
-  public setExperience(exp: experience): Observable<any> {
-    return this.http.post<any>(this.apiURL+ 'Crear/', exp);
+  public detailExperience(id: number): Observable<experience> {
+    return this.http.get<experience>(this.apiURL+ `detailExperience/${id}`);
+  }
+
+  public saveExperience(exp: experience): Observable<any> {
+    return this.http.post<any>(this.apiURL+ 'save/', exp);
+  }
+
+  public updateExperience(id: number, exp: experience): Observable<any> {
+    return this.http.put<any>(this.apiURL+ `update/${id}`, exp);
   }
 
   public deleteExperience(id: number): Observable<any> {
-    return this.http.delete<any>(this.apiURL+ 'Borrar/' + id);
-  }
-
-  public putExperience(id: number, exp: experience): Observable<any> {
-    return this.http.put<any>(this.apiURL+ 'Editar/' + id, exp);
+    return this.http.delete<any>(this.apiURL+ `delete/${id}`);
   }
 }

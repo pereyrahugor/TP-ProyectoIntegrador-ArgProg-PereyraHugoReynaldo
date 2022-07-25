@@ -32,13 +32,13 @@ public class ExperienceController {
     @Autowired
     ImpExperienceService impExperienceService;
     
-    @GetMapping ("/Listar")
+    @GetMapping ("/list")
     public  ResponseEntity <List<Experience>> list(){
         List<Experience> list = impExperienceService.list();
         return new ResponseEntity (list, HttpStatus.OK);
     }
     
-    @PostMapping ("/Crear")
+    @PostMapping ("/save")
     public ResponseEntity<?> create(@RequestBody ExperienceDto experienceDto){
         if(StringUtils.isBlank(experienceDto.getBusiness()))
             return new ResponseEntity(new Mensaje("El nombre de la empresa es obligatorio"), HttpStatus.BAD_REQUEST);
@@ -50,7 +50,7 @@ public class ExperienceController {
         return new ResponseEntity(new Mensaje("Nueva Experiencia Agregada Correctamente"), HttpStatus.OK);
     }
     
-    @PutMapping ("/Actualizar/{id}")
+    @PutMapping ("/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id")long id, @RequestBody ExperienceDto experienceDto){
         if(!impExperienceService.existById(id))
             return new ResponseEntity(new Mensaje("El ID no Existe"),HttpStatus.BAD_REQUEST);
@@ -71,7 +71,7 @@ public class ExperienceController {
             return new ResponseEntity(new Mensaje("Experiencia Actualizada Correctamente"), HttpStatus.OK);
     }
     
-    @DeleteMapping ("/Eliminar/{id}")
+    @DeleteMapping ("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id")long id){
         if(!impExperienceService.existById(id))
             return new ResponseEntity(new Mensaje("El ID no Existe"),HttpStatus.BAD_REQUEST);

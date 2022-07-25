@@ -26,7 +26,7 @@ export class ExperiencesNewFormComponent implements OnInit {
     const exp = new experience(this.imgBusiness, this.business, this.position, 
                                       this.yearIn, this.yearOut, this.descriptionPosition);
     console.log(experience);
-    this.experienceService.setExperience(exp).subscribe(data=>{
+    this.experienceService.saveExperience(exp).subscribe(data=>{
       alert("Se agrego una nueva experiencia correctamente");
       this.router.navigate(['']);
     }, err=>{
