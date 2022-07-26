@@ -3,11 +3,9 @@ package com.argprog.portfoliohrp.Controller;
 
 import com.argprog.portfoliohrp.DTO.ExperienceDto;
 import com.argprog.portfoliohrp.Entity.Experience;
-import com.argprog.portfoliohrp.Entity.Persona;
 import com.argprog.portfoliohrp.Security.Controller.Mensaje;
 import com.argprog.portfoliohrp.Service.ImpExperienceService;
 import java.util.List;
-import java.util.Optional;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping ("/Experiencia")
-@CrossOrigin (origins = "http://localhost:4200")
+@CrossOrigin (origins = "https://porfolio-frontend-argprog-hrp.web.app/")
 public class ExperienceController {
     @Autowired
     ImpExperienceService impExperienceService;
