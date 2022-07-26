@@ -1,7 +1,7 @@
 <div class="row">
     <div id="title">
         <H1>Proyectos Realizados</H1>
-        <button class="icon-btn add-btn" *ngIf="isLogged">
+        <button class="icon-btn add-btn" routerLink="/newProject" *ngIf="isLogged">
             <div class="add-icon"></div>
             <div class="btn-txt">Agregar Proyecto</div>
         </button>
@@ -20,8 +20,8 @@
             </a>
         </div>
         <div *ngIf="isLogged">
-            <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square">Editar</i></button>
-            <button type="button" class="btn btn-danger"><i class="bi bi-trash">Eliminar</i></button>
+            <button type="button" class="btn btn-primary" routerLink="/editProject/{{project.id}}"><i class="bi bi-pencil-square">Editar</i></button>
+            <button type="button" class="btn btn-danger"><i class="bi bi-trash" (click)="onDeletePro(project.id)">Eliminar</i></button>
         </div>
     </div>
 </div>

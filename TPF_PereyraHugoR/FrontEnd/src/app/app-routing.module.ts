@@ -7,6 +7,7 @@ import { ExperienceEditFormComponent } from './components/experience-edit-form/e
 import { ExperiencesNewFormComponent } from './components/experiences-new-form/experiences-new-form.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { PersonaEditFormComponent } from './components/persona-edit-form/persona-edit-form.component';
 import { ProjectEditFormComponent } from './components/project-edit-form/project-edit-form.component';
 import { ProjectNewFormComponent } from './components/project-new-form/project-new-form.component';
 import { SkillEditFormComponent } from './components/skill-edit-form/skill-edit-form.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
    {path:'', component: HomeComponent},
    {path:'login', component: LoginComponent},
    {path:'tests', component: TestsComponent},
+   {path:'editPersona/:id', component: PersonaEditFormComponent},
    {path:'newExperience', component: ExperiencesNewFormComponent},
    {path:'editExperience/:id', component: ExperienceEditFormComponent},
    {path:'newEducation', component: EducationNewFormComponent},

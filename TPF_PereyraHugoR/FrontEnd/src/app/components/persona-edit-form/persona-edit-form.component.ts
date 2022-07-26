@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { project } from 'src/app/model/project.model';
-import { ProjectService } from 'src/app/service/project.service';
+import { persona } from 'src/app/model/persona.model';
+import { PersonaService } from 'src/app/service/persona.service';
 
 @Component({
-  selector: 'app-project-edit-form',
-  templateUrl: './project-edit-form.component.html',
-  styleUrls: ['./project-edit-form.component.css']
+  selector: 'app-persona-edit-form',
+  templateUrl: './persona-edit-form.component.html',
+  styleUrls: ['./persona-edit-form.component.css']
 })
-export class ProjectEditFormComponent implements OnInit {
+export class PersonaEditFormComponent implements OnInit {
 
-  pro: project = null;
+  per: persona = null;
 
-  constructor(private projectoService: ProjectService, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private personaService: PersonaService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params['id'];
-    this.projectoService.detailProject(id).subscribe(
+    this.personaService.detailPersona(id).subscribe(
       data => {
-        this.pro = data;
+        this.per = data;
       }, err => {
         alert("La modificación Falló");
         this.router.navigate(['']);
@@ -26,9 +26,9 @@ export class ProjectEditFormComponent implements OnInit {
     )
   }
 
-  onUpdateProject():void {
+  onUpdatePersona():void {
     const id = this.activatedRoute.snapshot.params['id'];
-    this.projectoService.updateProject(id, this.pro).subscribe(
+    this.personaService.updatePersona(id, this.per).subscribe(
       data => {
         alert("La modificación se realizo correctamente.");
         this.router.navigate(['']);
@@ -44,4 +44,3 @@ export class ProjectEditFormComponent implements OnInit {
   }
 
 }
-

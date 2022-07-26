@@ -53,7 +53,7 @@ public class ProjectController {
             return new ResponseEntity(new Mensaje("El nombre del proyecto es obligatorio"), HttpStatus.BAD_REQUEST);
         if(impProjectService.existsByNameProject(projectDto.getNameProject()))
             return new ResponseEntity(new Mensaje("El proyecto ingresado ya existe"), HttpStatus.BAD_REQUEST);
-        Project project = new Project(projectDto.getNameProject(), projectDto.getImgProject(),
+        Project project = new Project(projectDto.getImgProject(), projectDto.getNameProject(),
                                       projectDto.getDescriptionProject(), projectDto.getLinkProject());
         impProjectService.save(project);
         return new ResponseEntity(new Mensaje("Nueva Proyecto Agregado Correctamente"), HttpStatus.OK);

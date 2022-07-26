@@ -28,6 +28,7 @@ import { ExperienceEditFormComponent } from './components/experience-edit-form/e
 import { EducationEditFormComponent } from './components/education-edit-form/education-edit-form.component';
 import { SkillEditFormComponent } from './components/skill-edit-form/skill-edit-form.component';
 import { ProjectEditFormComponent } from './components/project-edit-form/project-edit-form.component';
+import { PersonaEditFormComponent } from './components/persona-edit-form/persona-edit-form.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ProjectEditFormComponent } from './components/project-edit-form/project
     ExperienceEditFormComponent,
     EducationEditFormComponent,
     SkillEditFormComponent,
-    ProjectEditFormComponent
+    ProjectEditFormComponent,
+    PersonaEditFormComponent
   ],
   imports: [
     BrowserModule,

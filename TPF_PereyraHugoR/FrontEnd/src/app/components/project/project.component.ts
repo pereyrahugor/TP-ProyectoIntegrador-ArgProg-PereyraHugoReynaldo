@@ -31,4 +31,18 @@ export class ProjectComponent implements OnInit {
     this.projectService.listProject().subscribe(data => {this.project = data})
   }
 
-}
+  onDeletePro(id?: number): void {
+    if(id != undefined){
+      this.projectService.deleteProject(id).subscribe(
+        data => {
+          this.projectService.listProject().subscribe(data => {this.project = data});
+          alert ("Se elimino correctamente el elemento selecionado.");
+        },
+        err => {
+          alert ("No se puedo eliminar el proyecto selecionada");
+        }
+        )
+      }
+    }
+  }
+
