@@ -30,6 +30,7 @@ export class ExperienceEditFormComponent implements OnInit {
     const id = this.activatedRoute.snapshot.params['id'];
     this.experienceService.updateExperience(id, this.exp).subscribe(
       data => {
+        alert("La modificación se realizo correctamente.");
         this.router.navigate(['']);
       }, err => {
         alert("La modificación Falló");

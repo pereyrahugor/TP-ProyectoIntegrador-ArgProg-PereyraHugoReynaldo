@@ -12,19 +12,23 @@ export class SocialService {
 
   constructor (private http: HttpClient) { }
 
-  public getSocial(): Observable<social[]> {
-    return this.http.get<social[]>(this.apiURL+ 'Listar');
+  public listSocial(): Observable<social[]> {
+    return this.http.get<social[]>(this.apiURL+ 'list');
   }
 
-  public setSocial(): Observable<social> {
-    return this.http.post<social>(this.apiURL+ 'Crear', social);
+  public detailSocial(id: number): Observable<social> {
+    return this.http.get<social>(this.apiURL+ `detail/${id}`);
   }
 
-  public deleteSocial(id: number): Observable<social> {
-    return this.http.delete<social>(this.apiURL+ 'Borrar/' + id);
+  public saveSocial(soc: social): Observable<any> {
+    return this.http.post<any>(this.apiURL+ 'save/', soc);
   }
 
-  public putSocial(id: number): Observable<social> {
-    return this.http.put<social>(this.apiURL+ 'Editar/' + id, social);
+  public updateSocial(id: number, soc: social): Observable<any> {
+    return this.http.put<any>(this.apiURL+ `update/${id}`, soc);
+  }
+
+  public deleteSocial(id: number): Observable<any> {
+    return this.http.delete<any>(this.apiURL+ `delete/${id}`);
   }
 }

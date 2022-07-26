@@ -28,7 +28,21 @@ export class SkillsComponent implements OnInit {
   }
 
   getDataSkill(): void {
-    this.skillService.getSkill().subscribe(data => {this.skill = data});
+    this.skillService.listSkill().subscribe(data => {this.skill = data});
   }
+
+  onDeleteSki(id?: number): void {
+    if(id != undefined){
+      this.skillService.deleteSkill(id).subscribe(
+        data => {
+          this.skillService.listSkill().subscribe(data => {this.skill = data});
+          alert ("Se elimino correctamente el elemento selecionado.");
+        },
+        err => {
+          alert ("No se puedo eliminar la experiencia selecionada");
+        }
+        )
+      }
+    }
 
 }

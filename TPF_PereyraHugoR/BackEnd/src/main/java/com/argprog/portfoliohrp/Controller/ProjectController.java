@@ -33,13 +33,21 @@ public class ProjectController {
     @Autowired
     ImpProjectService impProjectService;
     
-    @GetMapping ("/Listar")
+    @GetMapping ("/list")
     public ResponseEntity <List<Project>> list(){
         List<Project> list = impProjectService.list();
         return new ResponseEntity (list, HttpStatus.OK);
     }
     
-    @PostMapping ("/Crear")
+    @GetMapping("/detail/{id}")
+    public ResponseEntity<Project> getById(@PathVariable("id") long id){
+        if(!impProjectService.existById(id))
+            return new ResponseEntity(new Mensaje("El ID no Existe"), HttpStatus.NOT_FOUND);
+        Project project = impProjectService.getOne(id).get();
+        return new ResponseEntity(project, HttpStatus.OK);
+    }
+    
+    @PostMapping ("/save")
     public ResponseEntity<?> create(@RequestBody ProjectDto projectDto){
         if(StringUtils.isBlank(projectDto.getNameProject()))
             return new ResponseEntity(new Mensaje("El nombre del proyecto es obligatorio"), HttpStatus.BAD_REQUEST);
@@ -52,7 +60,7 @@ public class ProjectController {
         
     }
     
-    @PutMapping ("/Actualizar/{id}")
+    @PutMapping ("/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id")long id, @RequestBody ProjectDto projectDto){
         if(!impProjectService.existById(id))
             return new ResponseEntity(new Mensaje("El ID no Existe"),HttpStatus.BAD_REQUEST);
@@ -71,7 +79,7 @@ public class ProjectController {
             return new ResponseEntity(new Mensaje("Proyecto Actualizado Correctamente"), HttpStatus.OK);
     }
     
-    @DeleteMapping ("/Eliminar/{id}")
+    @DeleteMapping ("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id")long id){
         if(!impProjectService.existById(id))
             return new ResponseEntity(new Mensaje("El ID no Existe"),HttpStatus.BAD_REQUEST);

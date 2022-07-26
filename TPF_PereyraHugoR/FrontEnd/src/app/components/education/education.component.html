@@ -1,7 +1,7 @@
 <div class="row">
     <div id="title">
         <h1>Educación y Estudios Realizados</h1>
-        <button class="icon-btn add-btn" *ngIf="isLogged">
+        <button class="icon-btn add-btn" routerLink="/newEducation" *ngIf="isLogged">
             <div class="add-icon"></div>
             <div class="btn-txt">Agregar Estudio</div>
         </button>
@@ -17,8 +17,8 @@
             <h5>Finalizado: {{education.yearStudied | date:'MMM-yyyy'}}</h5>
         </div>
         <div *ngIf="isLogged">
-            <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square">Editar</i></button>
-            <button type="button" class="btn btn-danger"><i class="bi bi-trash">Eliminar</i></button>
+            <button type="button" class="btn btn-primary" routerLink="/editEducation/{{education.id}}"><i class="bi bi-pencil-square">Editar</i></button>
+            <button type="button" class="btn btn-danger"><i class="bi bi-trash" (click)="onDeleteEdu(education.id)">Eliminar</i></button>
         </div>
     </div>
 </div>

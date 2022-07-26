@@ -28,7 +28,21 @@ export class EducationComponent implements OnInit {
   }
 
   getDataEducation(): void {
-    this.educationService.getEducation().subscribe(data => {this.education = data});
+    this.educationService.listEducation().subscribe(data => {this.education = data});
   }
+
+  onDeleteEdu(id?: number): void {
+    if(id != undefined){
+      this.educationService.deleteEducation(id).subscribe(
+        data => {
+          this.educationService.listEducation().subscribe(data => {this.education = data});
+          alert ("Se elimino correctamente el elemento selecionado.");
+        },
+        err => {
+          alert ("No se puedo eliminar la experiencia selecionada");
+        }
+        )
+      }
+    }
 
 }

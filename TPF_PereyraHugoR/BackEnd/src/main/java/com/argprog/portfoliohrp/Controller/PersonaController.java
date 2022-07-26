@@ -31,12 +31,20 @@ public class PersonaController {
     @Autowired
     ImpPersonaService impPersonaService;
     
-    @GetMapping ("/Listar")
+    @GetMapping ("/list")
     public ResponseEntity<Optional<Persona>> getPersona(){
         return new ResponseEntity(impPersonaService.getOne(1),HttpStatus.OK);
     }
     
-    @PostMapping ("/Crear")
+    @GetMapping("/detail/{id}")
+    public ResponseEntity<Persona> getById(@PathVariable("id") long id){
+        if(!impPersonaService.existById(id))
+            return new ResponseEntity(new Mensaje("El ID no Existe"), HttpStatus.NOT_FOUND);
+        Persona persona = impPersonaService.getOne(id).get();
+        return new ResponseEntity(persona, HttpStatus.OK);
+    }
+    
+    @PostMapping ("/save")
     public ResponseEntity<?> create(@RequestBody PersonaDto personaDto){
         if(StringUtils.isBlank(personaDto.getName()))
             return new ResponseEntity(new Mensaje("El Nombre es obligatorio"), HttpStatus.BAD_REQUEST);
@@ -51,7 +59,7 @@ public class PersonaController {
         return new ResponseEntity(new Mensaje("Nueva Persona Agregada Correctamente"), HttpStatus.OK);
     }
     
-    @PutMapping ("/Actualizar/{id}")
+    @PutMapping ("/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id")long id, @RequestBody PersonaDto personaDto){
         if(!impPersonaService.existById(id))
             return new ResponseEntity(new Mensaje("El ID no Existe"),HttpStatus.BAD_REQUEST);

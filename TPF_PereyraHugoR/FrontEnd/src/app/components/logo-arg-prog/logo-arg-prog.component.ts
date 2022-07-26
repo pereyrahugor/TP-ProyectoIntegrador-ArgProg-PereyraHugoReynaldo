@@ -17,7 +17,7 @@ export class LogoArgProgComponent implements OnInit {
   constructor(public socialService: SocialService, private router: Router, private tokenService: TokenService) { }
 
   ngOnInit(): void {
-    this.socialService.getSocial().subscribe(data => {this.social = data});
+    this.socialService.listSocial().subscribe(data => {this.social = data});
     if (this.tokenService.getToken()) {
       this.isLogged = true;
     }else{

@@ -19,7 +19,7 @@ public class Social{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    private Long idPersona;
+    /*private Long idPersona;*/
     private String imgSocial;
     private String nameSocial;
     private String linkSocial;

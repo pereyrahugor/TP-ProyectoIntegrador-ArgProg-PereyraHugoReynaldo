@@ -12,19 +12,23 @@ export class ProjectService {
 
   constructor (private http: HttpClient) { }
 
-  public getProject(): Observable<project[]> {
-    return this.http.get<project[]>(this.apiURL+ 'Listar');
+  public listProject(): Observable<project[]> {
+    return this.http.get<project[]>(this.apiURL+ 'list');
   }
 
-  public setProject(): Observable<project> {
-    return this.http.post<project>(this.apiURL+ 'Crear', project);
+  public detailProject(id: number): Observable<project> {
+    return this.http.get<project>(this.apiURL+ `detail/${id}`);
   }
 
-  public deleteProject(id: number): Observable<project> {
-    return this.http.delete<project>(this.apiURL+ 'Borrar/' + id);
+  public saveProject(pro: project): Observable<any> {
+    return this.http.post<any>(this.apiURL+ 'save/', pro);
   }
 
-  public putProject(id: number): Observable<project> {
-    return this.http.put<project>(this.apiURL+ 'Editar/' + id, project);
+  public updateProject(id: number, pro: project): Observable<any> {
+    return this.http.put<any>(this.apiURL+ `update/${id}`, pro);
+  }
+
+  public deleteProject(id: number): Observable<any> {
+    return this.http.delete<any>(this.apiURL+ `delete/${id}`);
   }
 }

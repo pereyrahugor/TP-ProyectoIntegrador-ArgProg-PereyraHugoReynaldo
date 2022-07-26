@@ -32,26 +32,34 @@ public class SkillController {
     @Autowired
     ImpSkillService impSkillService;
     
-    @GetMapping ("/Listar")
+    @GetMapping ("/list")
     public ResponseEntity <List<Skill>> list(){
         List<Skill> list = impSkillService.list();
         return new ResponseEntity (list, HttpStatus.OK);
     }
     
-    @PostMapping ("/Crear")
+    @GetMapping("/detail/{id}")
+    public ResponseEntity<Skill> getById(@PathVariable("id") long id){
+        if(!impSkillService.existById(id))
+            return new ResponseEntity(new Mensaje("El ID no Existe"), HttpStatus.NOT_FOUND);
+        Skill skill = impSkillService.getOne(id).get();
+        return new ResponseEntity(skill, HttpStatus.OK);
+    }
+    
+    @PostMapping ("/save")
     public ResponseEntity<?> create(@RequestBody SkillDto skillDto){
         if(StringUtils.isBlank(skillDto.getNameSkill()))
             return new ResponseEntity(new Mensaje("El nombre de la Habilidad es obligatorio"), HttpStatus.BAD_REQUEST);
         if(impSkillService.existsByNameSkill(skillDto.getNameSkill()))
             return new ResponseEntity(new Mensaje("La Habilidad ingresada ya existe"), HttpStatus.BAD_REQUEST);
-        Skill skill = new Skill(skillDto.getNameSkill(), skillDto.getImgSkill(), skillDto.getColorOut(),
-                                      skillDto.getColorIn(), skillDto.getProgress());
+        Skill skill = new Skill(skillDto.getImgSkill(), skillDto.getColorIn(), skillDto.getColorOut(),
+                                      skillDto.getNameSkill(), skillDto.getProgress());
         impSkillService.save(skill);
         return new ResponseEntity(new Mensaje("Nueva Habilidad Agregada Correctamente"), HttpStatus.OK);
         
     }
     
-    @PutMapping ("/Actualizar/{id}")
+    @PutMapping ("/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id")long id, @RequestBody SkillDto skillDto){
         if(!impSkillService.existById(id))
             return new ResponseEntity(new Mensaje("El ID no Existe"),HttpStatus.BAD_REQUEST);
@@ -71,7 +79,7 @@ public class SkillController {
             return new ResponseEntity(new Mensaje("Habilidad Actualizada Correctamente"), HttpStatus.OK);
     }
     
-    @DeleteMapping ("/Eliminar/{id}")
+    @DeleteMapping ("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id")long id){
         if(!impSkillService.existById(id))
             return new ResponseEntity(new Mensaje("El ID no Existe"),HttpStatus.BAD_REQUEST);

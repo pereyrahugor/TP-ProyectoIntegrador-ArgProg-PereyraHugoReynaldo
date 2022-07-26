@@ -31,4 +31,18 @@ export class ExperiencesComponent implements OnInit {
     this.experienceService.listExperience().subscribe(data => {this.experience = data});
   }
 
-}
+  onDeleteExp(id?: number): void {
+    if(id != undefined){
+      this.experienceService.deleteExperience(id).subscribe(
+        data => {
+          this.experienceService.listExperience().subscribe(data => {this.experience = data});
+          alert ("Se elimino correctamente el elemento selecionado.");
+        },
+        err => {
+          alert ("No se puedo eliminar la experiencia selecionada");
+        }
+        )
+      }
+    }
+  }
+

@@ -40,17 +40,13 @@ public class ExperienceController {
         return new ResponseEntity (list, HttpStatus.OK);
     }
     
-    /*@GetMapping ("/detail/{id}")
-    public ResponseEntity<Experience> findExperience(@PathVariable("id")long id, @RequestBody ExperienceDto experienceDto){
-        Experience experience = impExperienceService.getOne(id).get();
-        experience.setImgBusiness(experienceDto.getImgBusiness());
-        experience.setBusiness(experienceDto.getBusiness());
-        experience.setPosition(experienceDto.getImgBusiness());
-        experience.setYearIn(experienceDto.getYearIn());
-        experience.setYearOut(experienceDto.getYearOut());
-        experience.setDescriptionPosition(experienceDto.getDescriptionPosition());
-        return new ResponseEntity(experienceDto,HttpStatus.OK);
-    }*/
+    @GetMapping("/detail/{id}")
+    public ResponseEntity<Experience> getById(@PathVariable("id") long id){
+        if(!impExperienceService.existById(id))
+            return new ResponseEntity(new Mensaje("El ID no Existe"), HttpStatus.NOT_FOUND);
+        Experience experiencia = impExperienceService.getOne(id).get();
+        return new ResponseEntity(experiencia, HttpStatus.OK);
+    }
     
     @PostMapping ("/save")
     public ResponseEntity<?> create(@RequestBody ExperienceDto experienceDto){
@@ -77,7 +73,7 @@ public class ExperienceController {
         Experience experience = impExperienceService.getOne(id).get();
         experience.setImgBusiness(experienceDto.getImgBusiness());
         experience.setBusiness(experienceDto.getBusiness());
-        experience.setPosition(experienceDto.getImgBusiness());
+        experience.setPosition(experienceDto.getPosition());
         experience.setYearIn(experienceDto.getYearIn());
         experience.setYearOut(experienceDto.getYearOut());
         experience.setDescriptionPosition(experienceDto.getDescriptionPosition());

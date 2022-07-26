@@ -1,4 +1,5 @@
-<section class="background-radial-gradient overflow-hidden" id="section" *ngIf="exp">
+
+<section class="background-radial-gradient overflow-hidden" id="section" *ngIf="ski">
     <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
       <div class="row gx-lg-5 align-items-center mb-5">
         <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
@@ -8,12 +9,13 @@
           >
             Actualizar <br />
             <span style="color: hsl(218, 81%, 75%)"
-              >Experiencia Laboral</span
+              >Habilidad</span
             >
           </h1>
           <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
             Completa los datos
             <br />Todos son obligatorios
+            <br />Los colores debe tener el formato hexadecimal con el # como prefijo.
             <br />En imagen se debe colocar un URL, se recomienda utilizar ImgBB.
             <br /><a href="https://imgbb.com">https://imgbb.com</a>
 
@@ -30,79 +32,67 @@
           ></div>
           <div class="card bg-glass">
             <div class="card-body px-4 py-5 px-md-5">
-              <form #f="ngForm" (ngSubmit)="onUpdateExperience()" novalidate>
+              <form #f="ngForm" (ngSubmit)="onUpdateSkill()" novalidate>
                 <!-- Exp img -->
                 <div class="form-outline mb-4">
                   <input 
                     type = "string"
-                    id = "imgBusiness"
-                    name = "imgBusiness"
+                    id = "imgSkill"
+                    name = "imgSkill"
                     class="form-control"
-                    [(ngModel)] = "exp.imgBusiness"
+                    [(ngModel)] = "ski.imgSkill"
                     required
                   />
-                  <label class="form-label" for="imgBusiness">Imagen Empresa</label>
+                  <label class="form-label" for="imgSkill">Imagen Habilidad</label>
                 </div>
                 <!-- business  -->
                 <div class="form-outline mb-4">
                   <input
                     type = "string"
-                    id = "business"
-                    name = "business"
+                    id = "colorIn"
+                    name = "colorIn"
                     class="form-control"
-                    [(ngModel)] = "exp.business"
+                    [(ngModel)] = "ski.colorIn"
                     required
                   />
-                  <label class="form-label" for="business">Empresa</label>
+                  <label class="form-label" for="colorIn">Color Fijo</label>
                 </div>
                 <!-- position  -->
                 <div class="form-outline mb-4">
                     <input 
                       type = "string"
-                      id = "position"
-                      name = "position"
+                      id = "colorOut"
+                      name = "colorOut"
                       class="form-control"
-                      [(ngModel)] = "exp.position"
+                      [(ngModel)] = "ski.colorOut"
                       required
                     />
-                    <label class="form-label" for="position">Puesto</label>
+                    <label class="form-label" for="colorOut">Color Barra Progreso</label>
                   </div>
                   <!-- yearIn  -->
                   <div class="form-outline mb-4">
                     <input 
-                      type = "date"
-                      id = "yearIn"
-                      name = "yearIn"
+                      type = "string"
+                      id = "nameSkill"
+                      name = "nameSkill"
                       class="form-control"
-                      [(ngModel)] = "exp.yearIn"
+                      [(ngModel)] = "ski.nameSkill"
                       required
                     />
-                    <label class="form-label" for="yearIn">Año de Ingreso</label>
+                    <label class="form-label" for="nameSkill">Nombre Habilidad</label>
                   </div>
                   <!-- yearOut  -->
                   <div class="form-outline mb-4">
                     <input 
-                      type = "date"
-                      id = "yearOut"
-                      name = "yearOut"
+                      type = "number"
+                      id = "progress"
+                      name = "progress"
                       class="form-control"
-                      [(ngModel)] = "exp.yearOut"
+                      [(ngModel)] = "ski.progress"
                       required
                     />
-                    <label class="form-label" for="yearOut">Año de Salida</label>
+                    <label class="form-label" for="progress">% de Progreso</label>
                   </div>
-                    <!-- descriptionPosition  -->
-                    <div class="form-outline mb-4">
-                        <input 
-                          type = "string"
-                          id = "descriptionPosition"
-                          name = "descriptionPosition"
-                          class="form-control"
-                          [(ngModel)] = "exp.descriptionPosition"
-                          required
-                        />
-                        <label class="form-label" for="descriptionPosition">Descripción del Puesto</label>
-                      </div>
                 <!-- Submit button -->
                 <div class="container">
                   <button
@@ -122,3 +112,5 @@
       </div>
     </div>
   </section>
+ 
+

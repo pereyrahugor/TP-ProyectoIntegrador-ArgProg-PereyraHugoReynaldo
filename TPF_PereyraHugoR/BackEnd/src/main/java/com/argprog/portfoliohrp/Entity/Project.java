@@ -18,7 +18,7 @@ public class Project{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
-    private long idPersona;
+    /*private long idPersona;*/
     private String imgProject;
     private String nameProject;
     private String descriptionProject;

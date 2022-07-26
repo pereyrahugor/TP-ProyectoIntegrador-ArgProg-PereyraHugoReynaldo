@@ -14,7 +14,7 @@ export class TestsComponent implements OnInit {
   constructor(public educationService: EducationService) { }
 
   ngOnInit(): void {
-    this.educationService.getEducation().subscribe(data => {this.education = data});
+    this.educationService.listEducation().subscribe(data => {this.education = data});
   }
 
 }

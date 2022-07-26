@@ -18,7 +18,7 @@ public class Experience{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
-    private long idPersona;
+    /*private long idPersona;*/
     private String imgBusiness;
     private String business;
     private String position;

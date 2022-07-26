@@ -32,13 +32,21 @@ public class EducationController {
     @Autowired
     ImpEducationService impEducationService;
     
-    @GetMapping ("/Listar")
+    @GetMapping ("/list")
     public ResponseEntity <List<Education>> list(){
         List<Education> list = impEducationService.list();
         return new ResponseEntity (list, HttpStatus.OK);
     }
     
-    @PostMapping ("/Crear")
+    @GetMapping("/detail/{id}")
+    public ResponseEntity<Education> getById(@PathVariable("id") long id){
+        if(!impEducationService.existById(id))
+            return new ResponseEntity(new Mensaje("El ID no Existe"), HttpStatus.NOT_FOUND);
+        Education education = impEducationService.getOne(id).get();
+        return new ResponseEntity(education, HttpStatus.OK);
+    }
+    
+    @PostMapping ("/save")
     public ResponseEntity<?> create(@RequestBody EducationDto educationDto){
         if(StringUtils.isBlank(educationDto.getTitle()))
             return new ResponseEntity(new Mensaje("El Estudio es obligatorio"), HttpStatus.BAD_REQUEST);
@@ -51,7 +59,7 @@ public class EducationController {
         
     }
     
-    @PutMapping ("/Actualizar/{id}")
+    @PutMapping ("/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id")long id, @RequestBody EducationDto educationDto){
         if(!impEducationService.existById(id))
             return new ResponseEntity(new Mensaje("El ID no Existe"),HttpStatus.BAD_REQUEST);
@@ -71,7 +79,7 @@ public class EducationController {
             return new ResponseEntity(new Mensaje("Educación Actualizada Correctamente"), HttpStatus.OK);
     }
     
-    @DeleteMapping ("/Eliminar/{id}")
+    @DeleteMapping ("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id")long id){
         if(!impEducationService.existById(id))
             return new ResponseEntity(new Mensaje("El ID no Existe"),HttpStatus.BAD_REQUEST);

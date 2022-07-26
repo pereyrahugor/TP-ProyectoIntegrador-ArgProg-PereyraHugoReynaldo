@@ -32,13 +32,21 @@ public class SocialController {
         @Autowired
         ImpSocialService impSocialService;
     
-    @GetMapping ("/Listar")
+    @GetMapping ("/list")
     public ResponseEntity <List<Social>> list(){
         List<Social> list = impSocialService.list();
         return new ResponseEntity (list, HttpStatus.OK);
     }
     
-    @PostMapping ("/Crear")
+    @GetMapping("/detail/{id}")
+    public ResponseEntity<Social> getById(@PathVariable("id") long id){
+        if(!impSocialService.existById(id))
+            return new ResponseEntity(new Mensaje("El ID no Existe"), HttpStatus.NOT_FOUND);
+        Social social = impSocialService.getOne(id).get();
+        return new ResponseEntity(social, HttpStatus.OK);
+    }
+    
+    @PostMapping ("/save")
     public ResponseEntity<?> create(@RequestBody SocialDto socialDto){
         if(StringUtils.isBlank(socialDto.getNameSocial()))
             return new ResponseEntity(new Mensaje("El nombre de Red Social es obligatorio"), HttpStatus.BAD_REQUEST);
@@ -50,7 +58,7 @@ public class SocialController {
         
     }
     
-    @PutMapping ("/Actualizar/{id}")
+    @PutMapping ("/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id")long id, @RequestBody SocialDto socialDto){
         if(!impSocialService.existById(id))
             return new ResponseEntity(new Mensaje("El ID no Existe"),HttpStatus.BAD_REQUEST);
@@ -68,7 +76,7 @@ public class SocialController {
             return new ResponseEntity(new Mensaje("Red Social Actualizada Correctamente"), HttpStatus.OK);
     }
     
-    @DeleteMapping ("/Eliminar/{id}")
+    @DeleteMapping ("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id")long id){
         if(!impSocialService.existById(id))
             return new ResponseEntity(new Mensaje("El ID no Existe"),HttpStatus.BAD_REQUEST);

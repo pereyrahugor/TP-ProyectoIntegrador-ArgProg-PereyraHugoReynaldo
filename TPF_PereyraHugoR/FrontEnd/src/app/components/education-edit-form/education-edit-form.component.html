@@ -1,4 +1,5 @@
-<section class="background-radial-gradient overflow-hidden" id="section" *ngIf="exp">
+
+<section class="background-radial-gradient overflow-hidden" id="section" *ngIf="edu">
     <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
       <div class="row gx-lg-5 align-items-center mb-5">
         <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
@@ -8,7 +9,7 @@
           >
             Actualizar <br />
             <span style="color: hsl(218, 81%, 75%)"
-              >Experiencia Laboral</span
+              >Educación</span
             >
           </h1>
           <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
@@ -30,79 +31,67 @@
           ></div>
           <div class="card bg-glass">
             <div class="card-body px-4 py-5 px-md-5">
-              <form #f="ngForm" (ngSubmit)="onUpdateExperience()" novalidate>
+              <form #f="ngForm" (ngSubmit)="onUpdateEducation()" novalidate>
                 <!-- Exp img -->
                 <div class="form-outline mb-4">
                   <input 
                     type = "string"
-                    id = "imgBusiness"
-                    name = "imgBusiness"
+                    id = "imgInstitute"
+                    name = "imgInstitute"
                     class="form-control"
-                    [(ngModel)] = "exp.imgBusiness"
+                    [(ngModel)] = "edu.imgInstitute"
                     required
                   />
-                  <label class="form-label" for="imgBusiness">Imagen Empresa</label>
+                  <label class="form-label" for="imgInstitute">Imagen Institución</label>
                 </div>
                 <!-- business  -->
                 <div class="form-outline mb-4">
                   <input
                     type = "string"
-                    id = "business"
-                    name = "business"
+                    id = "title"
+                    name = "title"
                     class="form-control"
-                    [(ngModel)] = "exp.business"
+                    [(ngModel)] = "edu.title"
                     required
                   />
-                  <label class="form-label" for="business">Empresa</label>
+                  <label class="form-label" for="title">Titulo</label>
                 </div>
                 <!-- position  -->
                 <div class="form-outline mb-4">
                     <input 
-                      type = "string"
-                      id = "position"
-                      name = "position"
+                      type = "date"
+                      id = "yearStudied"
+                      name = "yearStudied"
                       class="form-control"
-                      [(ngModel)] = "exp.position"
+                      [(ngModel)] = "edu.yearStudied"
                       required
                     />
-                    <label class="form-label" for="position">Puesto</label>
+                    <label class="form-label" for="yearStudied">Fecha Finalización</label>
                   </div>
                   <!-- yearIn  -->
                   <div class="form-outline mb-4">
                     <input 
-                      type = "date"
-                      id = "yearIn"
-                      name = "yearIn"
+                      type = "text"
+                      id = "duration"
+                      name = "duration"
                       class="form-control"
-                      [(ngModel)] = "exp.yearIn"
+                      [(ngModel)] = "edu.duration"
                       required
                     />
-                    <label class="form-label" for="yearIn">Año de Ingreso</label>
+                    <label class="form-label" for="duration">Duración</label>
                   </div>
                   <!-- yearOut  -->
                   <div class="form-outline mb-4">
                     <input 
-                      type = "date"
-                      id = "yearOut"
-                      name = "yearOut"
+                      type = "text"
+                      id = "descriptionEducation"
+                      name = "descriptionEducation"
                       class="form-control"
-                      [(ngModel)] = "exp.yearOut"
+                      [(ngModel)] = "edu.descriptionEducation"
                       required
                     />
-                    <label class="form-label" for="yearOut">Año de Salida</label>
+                    <label class="form-label" for="descriptionEducation">Descripción de Estudio</label>
                   </div>
-                    <!-- descriptionPosition  -->
-                    <div class="form-outline mb-4">
-                        <input 
-                          type = "string"
-                          id = "descriptionPosition"
-                          name = "descriptionPosition"
-                          class="form-control"
-                          [(ngModel)] = "exp.descriptionPosition"
-                          required
-                        />
-                        <label class="form-label" for="descriptionPosition">Descripción del Puesto</label>
-                      </div>
                 <!-- Submit button -->
                 <div class="container">
                   <button
@@ -122,3 +111,4 @@
       </div>
     </div>
   </section>
+ 

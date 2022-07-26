@@ -25,6 +25,9 @@ import { SkillNewFormComponent } from './components/skill-new-form/skill-new-for
 import { EducationNewFormComponent } from './components/education-new-form/education-new-form.component';
 import { ExperiencesNewFormComponent } from './components/experiences-new-form/experiences-new-form.component';
 import { ExperienceEditFormComponent } from './components/experience-edit-form/experience-edit-form.component';
+import { EducationEditFormComponent } from './components/education-edit-form/education-edit-form.component';
+import { SkillEditFormComponent } from './components/skill-edit-form/skill-edit-form.component';
+import { ProjectEditFormComponent } from './components/project-edit-form/project-edit-form.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,10 @@ import { ExperienceEditFormComponent } from './components/experience-edit-form/e
     SkillNewFormComponent,
     EducationNewFormComponent,
     ExperiencesNewFormComponent,
-    ExperienceEditFormComponent
+    ExperienceEditFormComponent,
+    EducationEditFormComponent,
+    SkillEditFormComponent,
+    ProjectEditFormComponent
   ],
   imports: [
     BrowserModule,

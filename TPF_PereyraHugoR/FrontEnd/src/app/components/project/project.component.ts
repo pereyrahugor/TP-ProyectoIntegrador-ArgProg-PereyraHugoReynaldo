@@ -28,7 +28,7 @@ export class ProjectComponent implements OnInit {
   }
 
   getDataProject(): void {
-    this.projectService.getProject().subscribe(data => {this.project = data})
+    this.projectService.listProject().subscribe(data => {this.project = data})
   }
 
 }

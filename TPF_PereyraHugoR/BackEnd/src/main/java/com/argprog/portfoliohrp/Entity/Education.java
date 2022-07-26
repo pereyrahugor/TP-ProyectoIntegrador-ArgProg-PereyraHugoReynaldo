@@ -17,7 +17,7 @@ public class Education{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    private Long idPersona;
+    /*private Long idPersona;*/
     private String imgInstitute;
     private String title;
     private String yearStudied;
