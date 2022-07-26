@@ -30,4 +30,18 @@ export class LogoArgProgComponent implements OnInit {
     window.location.reload();
   }
 
+  onDeleteSoc(id?: number): void {
+    if(id != undefined){
+      this.socialService.deleteSocial(id).subscribe(
+        data => {
+          this.socialService.listSocial().subscribe(data => {this.social = data});
+          alert ("Se elimino correctamente el elemento selecionado.");
+        },
+        err => {
+          alert ("No se puedo eliminar la experiencia selecionada");
+        }
+        )
+      }
+    }
+
 }

@@ -12,6 +12,8 @@ import { ProjectEditFormComponent } from './components/project-edit-form/project
 import { ProjectNewFormComponent } from './components/project-new-form/project-new-form.component';
 import { SkillEditFormComponent } from './components/skill-edit-form/skill-edit-form.component';
 import { SkillNewFormComponent } from './components/skill-new-form/skill-new-form.component';
+import { SocialEditFormComponent } from './components/social-edit-form/social-edit-form.component';
+import { SocialNewFormComponent } from './components/social-new-form/social-new-form.component';
 import { TestsComponent } from './components/tests/tests.component';
 
 const routes: Routes = [
@@ -27,6 +29,8 @@ const routes: Routes = [
    {path:'editSkill/:id', component: SkillEditFormComponent},
    {path:'newProject', component: ProjectNewFormComponent},
    {path:'editProject/:id', component: ProjectEditFormComponent},
+   {path:'newSocial', component: SocialNewFormComponent},
+   {path:'editSocial/:id', component: SocialEditFormComponent},
    {path: '**', component: Error404Component}
 ];
 

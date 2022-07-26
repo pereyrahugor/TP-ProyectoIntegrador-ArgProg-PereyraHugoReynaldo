@@ -1,5 +1,5 @@
 
-<section class="background-radial-gradient overflow-hidden" id="section" *ngIf="exp">
+<section class="background-radial-gradient overflow-hidden" id="section">
     <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
       <div class="row gx-lg-5 align-items-center mb-5">
         <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
@@ -7,9 +7,9 @@
             class="my-5 display-5 fw-bold ls-tight"
             style="color: hsl(218, 81%, 95%)"
           >
-            Actualizar <br />
+            Agregar <br />
             <span style="color: hsl(218, 81%, 75%)"
-              >Experiencia Laboral</span
+              >Nueva Red Social</span
             >
           </h1>
           <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
@@ -31,86 +31,50 @@
           ></div>
           <div class="card bg-glass">
             <div class="card-body px-4 py-5 px-md-5">
-              <form #f="ngForm" (ngSubmit)="onUpdateExperience()" novalidate>
+              <form #f="ngForm" (ngSubmit)="onNewSocial()" novalidate>
                 <!-- Exp img -->
                 <div class="form-outline mb-4">
                   <input 
                     type = "string"
-                    id = "imgBusiness"
-                    name = "imgBusiness"
+                    id = "imgSocial"
+                    name = "imgSocial"
                     class="form-control"
-                    [(ngModel)] = "exp.imgBusiness"
+                    [(ngModel)] = "imgSocial"
                     required
                   />
-                  <label class="form-label" for="imgBusiness">Imagen Empresa</label>
+                  <label class="form-label" for="imgSocial">Imagen Red Social</label>
                 </div>
                 <!-- business  -->
                 <div class="form-outline mb-4">
                   <input
                     type = "string"
-                    id = "business"
-                    name = "business"
+                    id = "nameSocial"
+                    name = "nameSocial"
                     class="form-control"
-                    [(ngModel)] = "exp.business"
+                    [(ngModel)] = "nameSocial"
                     required
                   />
-                  <label class="form-label" for="business">Empresa</label>
+                  <label class="form-label" for="nameSocial">Nombre Red Social</label>
                 </div>
                 <!-- position  -->
                 <div class="form-outline mb-4">
                     <input 
                       type = "string"
-                      id = "position"
-                      name = "position"
+                      id = "linkSocial"
+                      name = "linkSocial"
                       class="form-control"
-                      [(ngModel)] = "exp.position"
+                      [(ngModel)] = "linkSocial"
                       required
                     />
-                    <label class="form-label" for="position">Puesto</label>
+                    <label class="form-label" for="linkSocial">URL</label>
                   </div>
-                  <!-- yearIn  -->
-                  <div class="form-outline mb-4">
-                    <input 
-                      type = "date"
-                      id = "yearIn"
-                      name = "yearIn"
-                      class="form-control"
-                      [(ngModel)] = "exp.yearIn"
-                      required
-                    />
-                    <label class="form-label" for="yearIn">Año de Ingreso</label>
-                  </div>
-                  <!-- yearOut  -->
-                  <div class="form-outline mb-4">
-                    <input 
-                      type = "date"
-                      id = "yearOut"
-                      name = "yearOut"
-                      class="form-control"
-                      [(ngModel)] = "exp.yearOut"
-                      required
-                    />
-                    <label class="form-label" for="yearOut">Año de Salida</label>
-                  </div>
-                    <!-- descriptionPosition  -->
-                    <div class="form-outline mb-4">
-                        <input 
-                          type = "string"
-                          id = "descriptionPosition"
-                          name = "descriptionPosition"
-                          class="form-control"
-                          [(ngModel)] = "exp.descriptionPosition"
-                          required
-                        />
-                        <label class="form-label" for="descriptionPosition">Descripción del Puesto</label>
-                      </div>
                 <!-- Submit button -->
                 <div class="container">
                   <button
                     type="submit"
                     class="btn btn-primary btn-block mb-4"
                     id="loginButton"
-                    >Actualizar</button>
+                    >Agregar</button>
                   <button (click)="volver()"
                     class="btn btn-primary btn-block mb-4"
                     id="volverButton"
@@ -123,3 +87,4 @@
       </div>
     </div>
   </section>
+ 
