@@ -8,7 +8,7 @@ import { education } from '../model/education.model';
 })
 export class EducationService {
 
-  apiURL = 'http://localhost:8080/Educacion/'
+  apiURL = 'https://porfolio-backend-hrp.herokuapp.com/Educacion/'
 
   constructor (private http: HttpClient) { }
 

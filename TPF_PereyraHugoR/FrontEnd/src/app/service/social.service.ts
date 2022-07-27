@@ -8,7 +8,7 @@ import { social } from '../model/social.model';
 })
 export class SocialService {
 
-  apiURL = 'http://localhost:8080/Social/'
+  apiURL = 'https://porfolio-backend-hrp.herokuapp.comSocial/'
 
   constructor (private http: HttpClient) { }
 
